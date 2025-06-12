@@ -14,12 +14,15 @@
   --color-blue-2: #312ECB;
   --color-blue-3: #0D47A1;
   --color-blue-5: #263238;
-  --color-blue-6: #37474F
+  --color-blue-6: #37474F;
+
+  --color-gray-1: #070308;
 }
 
 * {
   /* margin: 0px;
   padding: 0px; */
   box-sizing: border-box;
+  font-family: 'DM Sans', 'sans-serif';
 }
 
