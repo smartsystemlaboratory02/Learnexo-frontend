@@ -4,6 +4,8 @@ import Input from "../../../components/ui/form/Input";
 import OnboardingBody from "../components/OnboardingBody";
 import Select from "../../../components/ui/form/Select";
 import Check from "../../../components/ui/form/Check";
+import MainButton from "../../../components/ui/MainButton";
+import Or from "../components/Or";
 
 const SignUp = () => {
   return (
@@ -55,6 +57,12 @@ const SignUp = () => {
               <span className="text-blue-2">Privacy policy</span>
             </p>
           </div>
+        </div>
+
+        <MainButton width="full">Create account</MainButton>
+
+        <div className="mt-[60px]">
+          <Or />
         </div>
 
 
