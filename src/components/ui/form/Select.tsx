@@ -1,4 +1,4 @@
-import { ArrowDown } from 'lucide-react';
+// import { ArrowDown } from 'lucide-react';
 import React from 'react'
 
 type SelectProps = {
@@ -24,7 +24,7 @@ const Select: React.FC<SelectProps> = ({ placeholder, name, width }) => {
       //   onFocus={onFocus}
       >
         <button>
-          <selectedcontent></selectedcontent>
+          {/* <selectedcontent></selectedcontent> */}
         </button>
 
         <option value="" className='select_option'>{placeholder}</option>

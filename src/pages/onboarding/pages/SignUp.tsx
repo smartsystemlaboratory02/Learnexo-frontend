@@ -53,19 +53,18 @@ const SignUp = () => {
           <div className="text-blue-6 text-[14px] flex gap-2 items-center">
             <Check />{" "}
             <p>
-              I agree to LearNEXO <span className="text-blue-2">Terms of service</span> and{" "}
+              I agree to LearNEXO{" "}
+              <span className="text-blue-2">Terms of service</span> and{" "}
               <span className="text-blue-2">Privacy policy</span>
             </p>
           </div>
         </div>
 
-        <MainButton width="full">Create account</MainButton>
+        <MainButton width="full" bg="blue">Create account</MainButton>
 
         <div className="mt-[60px]">
           <Or />
         </div>
-
-
       </OnboardingBody>
     </div>
   );
