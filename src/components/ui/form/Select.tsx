@@ -27,10 +27,11 @@ const Select: React.FC<SelectProps> = ({ placeholder, name, width, options }) =>
       //   onFocus={onFocus}
       >
         <button>
-          <selectedcontent>{placeholder}</selectedcontent>
+          <selectedcontent></selectedcontent>
         </button>
 
         <div className='select-option-container'>
+           <option value="" className='select_option font-medium capitalize truncate'>{placeholder}</option>
           {
             options.map((option) => (
               <option key={option.value} value={option.value} className='select_option font-medium capitalize'>{option.label}</option>

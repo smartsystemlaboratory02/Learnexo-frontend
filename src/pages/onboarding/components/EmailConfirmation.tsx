@@ -1,4 +1,4 @@
-import React from 'react'
+// import React from 'react'
 import envelope from '../../../assets/images/open-envelope.png'
 
 const EmailConfirmation = () => {

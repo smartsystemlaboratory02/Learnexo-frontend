@@ -24,7 +24,7 @@ const SignUp = () => {
         <BlueTextLink><Link to='../login'>Login</Link></BlueTextLink>
       </HeaderText>
 
-      <div className="flex flex-col space-y-4 my-[60px]">
+      <div className="flex flex-col gap-4 my-[60px]">
         <div className="flex justify-between items-center">
           <Input
             placeholder="First name"
@@ -45,14 +45,14 @@ const SignUp = () => {
           type="password"
           name="email"
           width="full"
-          visibility={true}
+          visibility
         />
         <Input
           placeholder="confirm password"
           type="password"
           name="email"
           width="full"
-          visibility={true}
+          visibility
         />
         <Select placeholder="select role" name="gender" width="full" options={roleOptions}/>
 
