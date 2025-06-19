@@ -1,12 +1,10 @@
 // import React from 'react'
 import HeaderText from "../components/HeaderText";
 import Input from "../../../components/ui/form/Input";
-import OnboardingBody from "../components/OnboardingBody";
 import MainButton from "../../../components/ui/MainButton";
 
-const ForgotPassword = () => {
+const ResetPassword = () => {
   return (
-    <OnboardingBody>
       <div className="flex items-center justify-center h-full">
         <div>
           <HeaderText
@@ -37,8 +35,7 @@ const ForgotPassword = () => {
           </div>
         </div>
       </div>
-    </OnboardingBody>
   );
 };
 
-export default ForgotPassword;
+export default ResetPassword;

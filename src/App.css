@@ -17,6 +17,8 @@
   --color-blue-6: #37474F;
 
   --color-gray-1: #070308;
+
+  --color-black-1: #040308
 }
 
 * {
@@ -26,7 +28,8 @@
   font-family: 'DM Sans', 'sans-serif';
 }
 
-select, ::picker(select) {
+select,
+::picker(select) {
   appearance: base-select;
 }
 
@@ -53,31 +56,34 @@ select, ::picker(select) {
   gap: 20px;
   padding: 10px;
 
-  border-left: 1px solid black;
-  border-right: 1px solid black;
 }
 
-.select_option:first-of-type {
+
+.select-option-container {
+  border: 1px solid #B3B3B3;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* .select_option:first-of-type {
   border-radius: 12px 12px 0 0;
-  border-top: 1px solid black;
 }
 
 .select_option:last-of-type {
   border-radius: 0 0 12px 12px;
-  border-bottom: 1px solid black;
 }
 
 .select_option:not(option:last-of-type) {
   border-bottom: none;
-}
+} */
 
-.select_option:nth-of-type(odd) {
+/* .select_option:nth-of-type(odd) {
   background: #F7F9FC;
-}
+} */
 
 .select_option:hover,
 .select_option:focus {
-  background: #ddd;
+  background: #F7F9FC;
 }
 
 .select_option:checked {
@@ -85,21 +91,23 @@ select, ::picker(select) {
 }
 
 .select_option::checkmark {
+  display: none;
   order: 1;
   margin-left: auto;
-  content: "🔷";
 }
 
 ::picker(select) {
   opacity: 0;
-  transform: translateY(-0.5rem); /* Slide up initially */
+  transform: translateY(-0.5rem);
+  /* Slide up initially */
   transition: opacity 0.7s ease, transform 0.7s ease;
   transition-behavior: allow-discrete;
 }
 
 ::picker(select):popover-open {
   opacity: 1;
-  transform: translateY(0); /* Slide to original position */
+  transform: translateY(0);
+  /* Slide to original position */
 }
 
 @starting-style {

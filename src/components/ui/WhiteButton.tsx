@@ -1,21 +1,21 @@
 import React from "react";
 import type { ChildrenProps } from "../../utils/types/baseTypes";
 
-type MainButtonProps = ChildrenProps & {
+type WhiteButtonProps = ChildrenProps & {
   onClick?: () => void;
   width?: "full" | "fit";
-  bg?: "white" | "blue" | "black";
+  bg?: "white" | "blue" | "back";
 };
 
-const MainButton: React.FC<MainButtonProps> = ({
+const WhiteButton: React.FC<WhiteButtonProps> = ({
   children,
   onClick,
   width,
 }) => {
   return (
     <button
-      className={`${width === "full" ? "w-full" : "w-fit"} bg-blue-3 text-white  border-0
-           font-bold py-3 px-8 rounded-lg hover:scale-105 transition-all duration-300 `}
+      className={`${width === "full" ? "w-full" : "w-fit"} bg-white text-black border-1
+           font-semibold py-3 px-8 rounded-lg hover:scale-105 transition-all duration-300`}
       onClick={() => {
         if (onClick) {
           onClick();
@@ -27,4 +27,4 @@ const MainButton: React.FC<MainButtonProps> = ({
   );
 };
 
-export default MainButton;
+export default WhiteButton;
