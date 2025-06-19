@@ -2,7 +2,7 @@
 
 import { useNavigate, useParams } from "react-router-dom"
 import HeaderText from "../../components/HeaderText"
-import { Questions } from "../../service"
+import { handleSelect, Questions } from "../../service"
 import TestInstruction from "../../components/TestInstruction"
 import Question from "../../components/Question"
 import { useState } from "react"
@@ -15,22 +15,18 @@ const numberOfQuestions = Questions.length
 const AcademicTest = () => {
     const { id } = useParams<{ id: string }>()
     const navigate = useNavigate()
-    const [selected, setSelected] = useState<string>("")
-
+    
+    const [answers, setAnswers] = useState<Record<number, string>>({});
     let question = Questions.find((question) => question.index.toString() === id)
 
-    if (!id) {
-        return <div>Question not found</div>
-    }
+    if (!id) {return <div>Question not found</div>}
 
-    if (!question) {
-        return <div>Question not found</div>
-    }
+    if (!question) {return <div>Question not found</div>}
 
     const questionObject: BaseQuestion & {
         selected: string;
-        setSelected: React.Dispatch<React.SetStateAction<string>>;
-    } = { ...question, selected, setSelected }
+        setSelected: (value: string) => void;
+    } = { ...question, selected: answers[question.index] ?? "", setSelected: (value: string) => handleSelect(question.index, value, setAnswers) }
 
     return (
         <div className="flex flex-col gap-6">

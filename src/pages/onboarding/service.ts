@@ -77,3 +77,7 @@ export const Questions: BaseQuestion[] = [
         index: 5,
     }
 ];
+
+export const handleSelect = (questionIndex: number, answer: string, setAnswers:React.Dispatch<React.SetStateAction<Record<number, string>>>) => {
+        setAnswers(prev => ({ ...prev, [questionIndex]: answer }));
+    };
