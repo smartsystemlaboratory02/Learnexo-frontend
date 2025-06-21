@@ -16,14 +16,12 @@ const ResetPassword = () => {
               placeholder="Your new password"
               type="password"
               name="email"
-              width="full"
               visibility={true}
             />
             <Input
               placeholder="Confirm Your new password"
               type="password"
               name="email"
-              width="full"
               visibility={true}
             />
 

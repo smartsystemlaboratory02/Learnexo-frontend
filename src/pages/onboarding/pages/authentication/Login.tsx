@@ -15,12 +15,11 @@ const Login = () => {
       </HeaderText>
 
       <div className="flex flex-col space-y-4 mt-25">
-        <Input placeholder="Email" type="email" name="email" width="full" />
+        <Input placeholder="Email" type="email" name="email" />
         <Input
           placeholder="password"
           type="password"
           name="email"
-          width="full"
           visibility={true}
         />
 

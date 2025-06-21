@@ -9,6 +9,7 @@ import ResetPasswordSuccess from '../pages/onboarding/pages/authentication/Reset
 import PersonalAndContactInfo from '../pages/onboarding/pages/academic-test/PersonalAndContactInfo'
 import ChooseSubject from '../pages/onboarding/pages/academic-test/ChooseSubject'
 import AcademicTest from '../pages/onboarding/pages/academic-test/AcademicTest'
+import SchoolAndLearning from '../pages/onboarding/pages/academic-test/SchoolAndLearning'
 
 const OnboardingRoutes = () => {
     return (
@@ -26,6 +27,7 @@ const OnboardingRoutes = () => {
             <Route path='/onboarding/test' element={<OnboardingLayout />}>
                 <Route index element={<Navigate to="personalandcontactinfo" replace />} />
                 <Route path='personalandcontactinfo' element={<PersonalAndContactInfo />} />
+                <Route path='schoolandlearning' element={<SchoolAndLearning />} />
                 <Route path='choosesubject' element={<ChooseSubject />} />
                 <Route path='academictest/:id' element={<AcademicTest />} />
             </Route>

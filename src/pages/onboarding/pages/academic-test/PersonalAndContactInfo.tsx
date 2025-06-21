@@ -17,26 +17,26 @@ const PersonalAndContactInfo = () => {
 
             <form className='flex flex-col gap-10'>
                 <FormRow>
-                    <Input placeholder='Date of birth' name='dob' width='half' type='date' ></Input>
-                    <Select placeholder='Gender' name='dob' width='half' options={genderOptions}></Select>
+                    <Input placeholder='Date of birth' name='dob' half type='date' ></Input>
+                    <Select placeholder='Gender' name='dob' half options={genderOptions}></Select>
                 </FormRow>
 
 
                 <FormRow>
-                    <Input placeholder='residential address' name='dob' width='half' type='text' ></Input>
-                    <Input placeholder='town' name='dob' width='half' type='text' ></Input>
+                    <Input placeholder='residential address' name='dob' half type='text' ></Input>
+                    <Input placeholder='town' name='dob' half type='text' ></Input>
                 </FormRow>
 
                 <FormRow>
-                    <Input placeholder='state' name='dob' width='half' type='text' ></Input>
-                    <Input placeholder='state of origin' name='dob' width='half' type='text' ></Input>
+                    <Input placeholder='state' name='dob' half type='text' ></Input>
+                    <Input placeholder='state of origin' name='dob' half type='text' ></Input>
                 </FormRow>
 
                 <FormRow>
-                    <Select placeholder='Language' name='dob' width='full' options={genderOptions}></Select>
+                    <Select placeholder='Language' name='dob' options={genderOptions}></Select>
                 </FormRow>
 
-                <MainButton>Save and Continue</MainButton>
+                <MainButton link='../schoolandlearning'>Save and Continue</MainButton>
             </form>
         </div>
     )

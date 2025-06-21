@@ -15,7 +15,7 @@ const ForgotPassword = () => {
           />
 
           <div className="flex flex-col gap-6 mt-25">
-            <Input placeholder="Email" type="email" name="email" width="full" />
+            <Input placeholder="Email" type="email" name="email" />
 
             <MainButton onClick={() => navigate('checkemail')}>Send</MainButton> {/* Add timeout */}
             <MainButton white link="/onboarding/auth/login">Back to Login</MainButton>

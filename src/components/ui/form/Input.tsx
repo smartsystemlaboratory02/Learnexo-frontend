@@ -5,7 +5,7 @@ type InputProps = {
   placeholder: string;
   type: string;
   name: string;
-  width: "full" | "half";
+  half?: boolean;
   value?: string;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void;
@@ -18,7 +18,7 @@ const Input: React.FC<InputProps> = ({
   placeholder,
   type,
   name,
-  width,
+  half,
   value,
   onChange,
   onBlur,
@@ -31,7 +31,7 @@ const Input: React.FC<InputProps> = ({
 
   return (
     <div className={`${
-            width === "full" ? "w-full" : "w-[47%]"
+            half ? "w-[47%]" : "w-full"
           } relative`}>
         <input
           className={`w-full border border-gray-1/60 rounded-md py-4 px-5 outline-none focus:border-2 placeholder:text-gray-1/40 placeholder:capitalize`}

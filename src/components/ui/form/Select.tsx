@@ -1,22 +1,20 @@
 // import { ArrowDown } from 'lucide-react';
 import React from 'react'
+import type { Option } from '../../../utils/types/baseTypes';
 
 type SelectProps = {
   placeholder: string;
   name: string;
-  width: "full" | "half";
   value?: string;
   multiple?: boolean;
+  half?: boolean;
   size?: number;
-  options: {
-    value: string;
-    label: string;
-  }[];
+  options: Option[];
 };
 
-const Select: React.FC<SelectProps> = ({ placeholder, name, width, options }) => {
+const Select: React.FC<SelectProps> = ({ placeholder, name, half, options }) => {
   return (
-    <div className={`${width === "full" ? "w-full" : "w-[47%]"
+    <div className={`${half  ? "w-[47%]" : "w-full"
       } relative`}>
       <select
         className={`w-full border border-gray-1/60 rounded-md py-4 px-5 outline-none text-gray-1/40 capitalize select_input`}

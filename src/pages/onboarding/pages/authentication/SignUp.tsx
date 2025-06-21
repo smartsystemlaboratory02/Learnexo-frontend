@@ -30,31 +30,29 @@ const SignUp = () => {
             placeholder="First name"
             type="text"
             name="firstname"
-            width="half"
+            half
           />
           <Input
             placeholder="last name"
             type="text"
             name="lastname"
-            width="half"
+            half
           />
         </div>
-        <Input placeholder="Email" type="email" name="email" width="full" />
+        <Input placeholder="Email" type="email" name="email" />
         <Input
           placeholder="password"
           type="password"
           name="email"
-          width="full"
           visibility
         />
         <Input
           placeholder="confirm password"
           type="password"
           name="email"
-          width="full"
           visibility
         />
-        <Select placeholder="select role" name="gender" width="full" options={roleOptions}/>
+        <Select placeholder="select role" name="gender" options={roleOptions}/>
 
         <div className="text-blue-6 text-[14px] flex gap-2 items-center">
           <Check />

@@ -1,5 +1,5 @@
 import React from 'react'
-import type { ChildrenProps } from '../../../utils/types/baseTypes';
+import type { ChildrenProps } from '../../utils/types/baseTypes';
 
 type TestInstructionProps = ChildrenProps & {
     numberOfQuestions: number;

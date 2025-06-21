@@ -1,4 +1,4 @@
-import type { BaseQuestion } from "../../../utils/types/baseTypes";
+import type { BaseQuestion } from "../../utils/types/baseTypes";
 
 type OptionProp = {
     label: 'a' | 'b' | 'c' | 'd';
