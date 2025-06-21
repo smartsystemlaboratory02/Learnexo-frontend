@@ -1,4 +1,3 @@
-import { Field } from "@tanstack/react-form";
 import { EyeIcon, EyeOffIcon } from "lucide-react";
 import React, { useState } from "react";
 import FieldError from "./FieldError";
@@ -33,9 +32,13 @@ const Input: React.FC<InputProps> = ({
   const [show, setShow] = useState<boolean>(false);
 
   return (
-    <div className={`${half ? "w-[47%]" : "w-full"} relative`}>
+    <div
+      className={`${
+        half ? "md:w-[47%] mlg:w-full lgd:w-[47%]" : "w-full"
+      } relative`}
+    >
       <input
-        className={`w-full border border-gray-1/60 rounded-md py-4 px-5 not-focus-visible:outline-none focus:outline-gray-1/60 focus:outline-1 placeholder:text-gray-1/40 placeholder:capitalize z-30`}
+        className={`w-full border border-gray-1/60 rounded-md py-4 px-5 not-focus-visible:outline-none focus:outline-gray-1/60 focus:outline-1 placeholder:text-gray-1/40 placeholder:capitalize z-30 min-w-80 md:min-w-0 mlg:min-w-80 lgd:min-w-0`}
         placeholder={placeholder}
         type={type === "password" && show ? "text" : type}
         name={name}

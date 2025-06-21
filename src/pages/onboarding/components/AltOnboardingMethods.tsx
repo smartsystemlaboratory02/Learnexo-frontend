@@ -4,7 +4,7 @@ import MainButton from "../../../components/ui/MainButton";
 
 const AltOnboardingMethods = () => {
   return (
-    <div className="flex flex-col gap-4 mt-[30px]">
+    <div className="flex flex-col gap-4 md:mt-[30px] mlg:my-0 lgd:mt-[30px]">
         <MainButton white>
           <span className="mx-auto flex items-center gap-4 w-fit">
             <span>

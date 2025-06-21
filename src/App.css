@@ -10,6 +10,9 @@
   --font-montserrat: 'Montserrat', sans-serif;
   --font-dmsans: 'DM Sans', sans-serif;
 
+  --breakpoint-mlg: 56rem;
+  --breakpoint-lgd: 77rem;
+
   --color-white-2: #F7F9FC;
 
   --color-blue-2: #312ECB;

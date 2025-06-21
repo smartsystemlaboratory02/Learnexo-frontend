@@ -8,21 +8,23 @@ import BlueTextLink from "../../../../components/ui/BluetextLink";
 import { roleOptions } from "../../service";
 import { Link } from "react-router-dom";
 import AltOnboardingMethods from "../../components/AltOnboardingMethods";
+import FormRow from "../../../../components/ui/form/FormRow";
 
 const SignUp = () => {
   return (
-    <div>
+    <div className="flex flex-col gap-6 md:gap-8">
       <HeaderText title="create account" description="Already have an account?">
         <BlueTextLink>
           <Link to="../login">Login</Link>
         </BlueTextLink>
       </HeaderText>
 
-      <div className="flex flex-col gap-4 my-[60px]">
-        <div className="flex justify-between items-center">
+      <form className="flex flex-col gap-4 md:gap-6">
+        <FormRow>
           <Input placeholder="First name" type="text" name="firstname" half />
           <Input placeholder="last name" type="text" name="lastname" half />
-        </div>
+        </FormRow>
+
         <Input placeholder="Email" type="email" name="email" />
         <Input placeholder="password" type="password" name="email" visibility />
         <Input
@@ -33,20 +35,18 @@ const SignUp = () => {
         />
         <Select placeholder="select role" name="gender" options={roleOptions} />
 
-        <div className="text-blue-6 text-[14px] flex gap-2 items-center">
+        <div className="text-blue-6 text-[14px] flex gap-2 items-center md:mb-6">
           <Check />
           <p>
             I agree to LearNEXO <BlueTextLink>Terms of service</BlueTextLink>{" "}
             and <BlueTextLink>Privacy Policy</BlueTextLink>
           </p>
         </div>
-      </div>
 
-      <MainButton>Create account</MainButton>
+        <MainButton submit>Create account</MainButton>
+      </form>
 
-      <div className="mt-[60px]">
-        <Or />
-      </div>
+      <Or />
 
       <AltOnboardingMethods />
     </div>
