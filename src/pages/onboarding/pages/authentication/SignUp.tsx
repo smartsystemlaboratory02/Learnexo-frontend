@@ -9,10 +9,14 @@ import { roleOptions } from "../../service";
 import { Link } from "react-router-dom";
 import AltOnboardingMethods from "../../components/AltOnboardingMethods";
 import FormRow from "../../../../components/ui/form/FormRow";
+// import FullScreenOverlay from "../../../../components/ui/FullScreenOverlay";
+// import EmailConfirmation from "../../components/EmailConfirmation";
 
 const SignUp = () => {
   return (
     <div className="flex flex-col gap-6 md:gap-8">
+      {/* <FullScreenOverlay isOpen={true} onClose={() => {}}><EmailConfirmation /></FullScreenOverlay> */}
+
       <HeaderText title="create account" description="Already have an account?">
         <BlueTextLink>
           <Link to="../login">Login</Link>
