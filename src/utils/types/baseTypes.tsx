@@ -1,5 +1,5 @@
 export type ChildrenProps = {
-    children: React.ReactNode
+    children?: React.ReactNode
 }
 
 export type Option = {

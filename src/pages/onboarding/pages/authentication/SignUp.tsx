@@ -66,7 +66,7 @@ const SignUp = () => {
         </div>
       </div>
 
-      <MainButton width="full" bg="blue">Create account</MainButton>
+      <MainButton>Create account</MainButton>
 
       <div className="mt-[60px]">
         <Or />

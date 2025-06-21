@@ -10,7 +10,7 @@ const ChooseSubject = () => {
             <HeaderText title='Academic test' description='Choose a subject to be tested in'></HeaderText>
             <Select name='subjects' placeholder='Choose subjects' width='full' options={subjectsOptions}></Select>
             <Select name='subjects' placeholder='Rate your understanding of the subject selected' width='full' options={subjectsOptions}></Select>
-            <MainButton width='full'>Proceed to Questions</MainButton>
+            <MainButton >Proceed to Questions</MainButton>
         </div>
     )
 }

@@ -1,15 +1,15 @@
 import React from 'react'
+import type { ChildrenProps } from '../../../utils/types/baseTypes';
 
-type TestInstructionProps = {
+type TestInstructionProps = ChildrenProps & {
     numberOfQuestions: number;
-
 }
 
-const TestInstruction: React.FC<TestInstructionProps> = ({ numberOfQuestions }) => {
+const TestInstruction: React.FC<TestInstructionProps> = ({ children, numberOfQuestions }) => {
     return (
         <div className='shadow-md bg-white px-6 py-4 flex flex-col gap-3 rounded-xl'>
             <p className='text-xl font-medium'>Question 1 - {numberOfQuestions}</p>
-            <p>From the multiple choice questions, you are to choose answer between option A - D</p>
+            <p>{children}</p>
         </div>
     )
 }

@@ -2,12 +2,8 @@
 import HeaderText from "../../components/HeaderText";
 import Input from "../../../../components/ui/form/Input";
 import MainButton from "../../../../components/ui/MainButton";
-import { useNavigate } from "react-router-dom";
-import WhiteButton from "../../../../components/ui/WhiteButton";
 
 const ResetPassword = () => {
-  const navigate = useNavigate();
-  
   return (
         <div>
           <HeaderText
@@ -30,8 +26,9 @@ const ResetPassword = () => {
               width="full"
               visibility={true}
             />
-            <MainButton width="full" bg="blue">Reset Password</MainButton>
-            <WhiteButton width="full" onClick={() => navigate('/onboarding/auth/login')}>Back to Login</WhiteButton>
+
+            <MainButton>Reset Password</MainButton>
+            <MainButton white  link="/onboarding/auth/login">Back to Login</MainButton>
           </div>
         </div>
   );

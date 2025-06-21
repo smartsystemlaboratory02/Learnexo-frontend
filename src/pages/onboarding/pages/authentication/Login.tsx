@@ -30,7 +30,7 @@ const Login = () => {
       </div>
 
       <div className="my-[30px]">
-        <MainButton width="full">Login</MainButton>
+        <MainButton>Login</MainButton>
       </div>
 
       <Or />

@@ -1,13 +1,9 @@
 // import React from 'react'
 import HeaderText from "../../components/HeaderText";
 import MainButton from "../../../../components/ui/MainButton";
-import { useNavigate } from "react-router-dom";
-import WhiteButton from "../../../../components/ui/WhiteButton";
 import Or from "../../components/Or";
 
 const CheckEmail = () => {
-  const navigate = useNavigate();
-
   return (
     <div>
       <HeaderText
@@ -18,8 +14,8 @@ const CheckEmail = () => {
       <div className="flex flex-col gap-6 mt-25">
         <p>Didn't receive the email? Check spam or promotion folder</p>
         <Or />
-        <MainButton width="full">Resend Email</MainButton>
-        <WhiteButton width="full" onClick={() => navigate('/onboarding/auth/login')}>Back to Login</WhiteButton>
+        <MainButton >Resend Email</MainButton>
+        <MainButton white link="/onboarding/auth/login">Back to Login</MainButton>
       </div>
     </div>
   );

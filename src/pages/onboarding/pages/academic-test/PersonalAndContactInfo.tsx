@@ -1,4 +1,6 @@
+import FormRow from '../../../../components/ui/form/FormRow'
 import Input from '../../../../components/ui/form/Input'
+import PageProgress from '../../../../components/ui/form/PageProgress'
 import Select from '../../../../components/ui/form/Select'
 import MainButton from '../../../../components/ui/MainButton'
 import HeaderText from '../../components/HeaderText'
@@ -8,31 +10,33 @@ import { genderOptions } from '../../service'
 const PersonalAndContactInfo = () => {
     return (
         <div className='flex flex-col gap-10'>
+            <PageProgress totalSteps={2} step={1} />
             <HeaderText title='Personal & Contact Information' description='Tell us about yourself so we can personalize your learning experience!'></HeaderText>
 
             <ImagePlaceholder />
 
             <form className='flex flex-col gap-10'>
-                <div className='flex justify-between items-center'>
+                <FormRow>
                     <Input placeholder='Date of birth' name='dob' width='half' type='date' ></Input>
                     <Select placeholder='Gender' name='dob' width='half' options={genderOptions}></Select>
-                </div>
+                </FormRow>
 
-                <div className='flex justify-between items-center'>
+
+                <FormRow>
                     <Input placeholder='residential address' name='dob' width='half' type='text' ></Input>
                     <Input placeholder='town' name='dob' width='half' type='text' ></Input>
-                </div>
+                </FormRow>
 
-                <div className='flex justify-between items-center'>
+                <FormRow>
                     <Input placeholder='state' name='dob' width='half' type='text' ></Input>
                     <Input placeholder='state of origin' name='dob' width='half' type='text' ></Input>
-                </div>
+                </FormRow>
 
-                <div className='flex justify-between items-center'>
+                <FormRow>
                     <Select placeholder='Language' name='dob' width='full' options={genderOptions}></Select>
-                </div>
+                </FormRow>
 
-                <MainButton width='full'>Save and Continue</MainButton>
+                <MainButton>Save and Continue</MainButton>
             </form>
         </div>
     )
