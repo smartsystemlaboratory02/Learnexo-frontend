@@ -6,18 +6,13 @@ type HeaderTextProps = Partial<ChildrenProps> & {
   description?: string
 }
 
-const OnboardingLink: React.FC<ChildrenProps> = ({children}) => {
-  return (
-    <span className='text-blue-2 cursor-pointer'>{children}</span>
-  )
-}
 
 const HeaderText: React.FC<HeaderTextProps> = ({ children, title, description }) => {
   return (
-    <div className='font-dmsans flex flex-col gap-2 text-[#040308] mb-[]'>
-        <h1 className='font-bold text-3xl leading-[32px] capitalize'>{title}</h1>
-        <div className='leading-[21px]'>
-            <p>{description} <OnboardingLink>{children}</OnboardingLink></p>
+    <div className='flex flex-col gap-2 text-blue-5'>
+        <h1 className='font-bold text-2xl md:text-3xl md:leading-[32px] capitalize'>{title}</h1>
+        <div className='text-[14px] md:text-base md:leading-[21px]'>
+            <p>{description}{" "}{children}</p>
         </div>
     </div>
   )

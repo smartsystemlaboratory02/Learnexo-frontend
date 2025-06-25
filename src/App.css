@@ -3,11 +3,15 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
 @import "tailwindcss";
+@import "tailwindcss-animated";
 
 @theme {
   --font-inter: 'Inter', sans-serif;
   --font-montserrat: 'Montserrat', sans-serif;
   --font-dmsans: 'DM Sans', sans-serif;
+
+  --breakpoint-mlg: 56rem;
+  --breakpoint-lgd: 77rem;
 
   --color-white-2: #F7F9FC;
 
@@ -17,6 +21,13 @@
   --color-blue-6: #37474F;
 
   --color-gray-1: #070308;
+  --color-gray-2: #8F8F8F;
+  --color-gray-3: #D9D9D9;
+  --color-gray-4: #BBBBBB;
+
+  --color-black-1: #040308;
+
+  --color-green-3: #00C9A7;
 }
 
 * {
@@ -26,7 +37,8 @@
   font-family: 'DM Sans', 'sans-serif';
 }
 
-select, ::picker(select) {
+select,
+::picker(select) {
   appearance: base-select;
 }
 
@@ -53,31 +65,34 @@ select, ::picker(select) {
   gap: 20px;
   padding: 10px;
 
-  border-left: 1px solid black;
-  border-right: 1px solid black;
 }
 
-.select_option:first-of-type {
+
+.select-option-container {
+  border: 1px solid #B3B3B3;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* .select_option:first-of-type {
   border-radius: 12px 12px 0 0;
-  border-top: 1px solid black;
 }
 
 .select_option:last-of-type {
   border-radius: 0 0 12px 12px;
-  border-bottom: 1px solid black;
 }
 
 .select_option:not(option:last-of-type) {
   border-bottom: none;
-}
+} */
 
-.select_option:nth-of-type(odd) {
+/* .select_option:nth-of-type(odd) {
   background: #F7F9FC;
-}
+} */
 
 .select_option:hover,
 .select_option:focus {
-  background: #ddd;
+  background: #F7F9FC;
 }
 
 .select_option:checked {
@@ -85,21 +100,23 @@ select, ::picker(select) {
 }
 
 .select_option::checkmark {
+  display: none;
   order: 1;
   margin-left: auto;
-  content: "🔷";
 }
 
 ::picker(select) {
   opacity: 0;
-  transform: translateY(-0.5rem); /* Slide up initially */
+  transform: translateY(-0.5rem);
+  /* Slide up initially */
   transition: opacity 0.7s ease, transform 0.7s ease;
   transition-behavior: allow-discrete;
 }
 
 ::picker(select):popover-open {
   opacity: 1;
-  transform: translateY(0); /* Slide to original position */
+  transform: translateY(0);
+  /* Slide to original position */
 }
 
 @starting-style {
