@@ -26,9 +26,9 @@ const Select: React.FC<SelectProps> = ({ placeholder, name, half, options }) => 
         //   onBlur={onBlur}
         //   onFocus={onFocus}
       >
-        <button>
+        {/* <button>
           <selectedcontent></selectedcontent>
-        </button>
+        </button> */}
 
         <div className="select-option-container">
           <option
