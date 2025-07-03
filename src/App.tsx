@@ -1,17 +1,22 @@
 // import { useState } from 'react'
-import './App.css'
-// import Aside from './pages/onboarding/components/Aside'
-// import SignUp from './pages/onboarding/pages/SignUp'
-// import Login from "./pages/onboarding/pages/Login";
-// import ForgotPassword from "./pages/onboarding/pages/ForgotPassword";
-// import CheckEmail from "./pages/onboarding/pages/ForgotPasswordCheckEmail";
-// import Reset from "./pages/onboarding/pages/ResetPassword1";
-import AppRoutes from './routes';
+import "./App.css";
+import AppRoutes from "./routes";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
+const queryClient = new QueryClient();
+
+declare global {
+  interface Window {
+    __TANSTACK_QUERY_CLIENT__: import("@tanstack/query-core").QueryClient;
+  }
+}
 
 function App() {
   return (
-    <AppRoutes />
-  )
+    <QueryClientProvider client={queryClient}>
+      <AppRoutes />
+    </QueryClientProvider>
+  );
 }
 
-export default App
+export default App;
