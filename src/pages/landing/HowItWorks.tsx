@@ -3,6 +3,7 @@ import howitworks from "../../assets/images/how-it-works.png";
 import HowItWorksStep from "../../components/ui/landing/HowItWorksStep";
 import HowItWorksBento from "../../components/ui/landing/HowItWorksBento";
 import { howItWorksBentos, howItWorksSteps } from "./data";
+import ActiveDot from "../../components/ui/landing/ActiveDot";
 
 const HowItWorks = () => {
   const [selectedOption, setSelectedOption] = useState<number>(1);
@@ -57,6 +58,12 @@ const HowItWorks = () => {
             </HowItWorksBento>
           );
         })}
+      </div>
+
+      <div className="flex w-fit mx-auto gap-4 mt-10">
+        <ActiveDot selected={selectedOption} index={1} />
+        <ActiveDot selected={selectedOption} index={2} />
+        <ActiveDot selected={selectedOption} index={3} />
       </div>
     </div>
   );
