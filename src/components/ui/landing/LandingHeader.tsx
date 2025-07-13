@@ -5,7 +5,7 @@ import Search from "./Search";
 
 const HeroHeader = () => {
   return (
-    <div className="px-16 py-6 flex items-center border justify-between">
+    <div className="px-16 py-6 flex items-center justify-between">
       <Logo />
 
       <div className="flex mx-14 items-center gap-8">

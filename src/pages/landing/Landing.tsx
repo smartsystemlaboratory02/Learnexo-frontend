@@ -1,11 +1,13 @@
-import Hero from "./hero";
+import Hero from "./Hero";
 import HeroHeader from "../../components/ui/landing/LandingHeader";
+import HowItWorks from "./HowItWorks";
 
 const Landing = () => {
   return (
-    <div>
+    <div className="bg-green-1/2">
       <HeroHeader />
       <Hero />
+      <HowItWorks />
     </div>
   );
 };
