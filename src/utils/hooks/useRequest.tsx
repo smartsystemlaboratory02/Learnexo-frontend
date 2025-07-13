@@ -34,9 +34,6 @@ export const useRequest = async (
 
   try {
     let res = await fetch(`${api_base_url}${path}`, requestOptions);
-    // console.log("Response headers:", res.headers);
-    // const raw = await res.text();
-    // console.log("Raw response:", raw);
     const data = await res.json();
 
     if (!res.ok) {

@@ -23,7 +23,8 @@ const Login = () => {
   });
 
   if (isError) {
-    alert(`error: ${JSON.stringify(error, null, 2)}`);
+    console.log('wahala tih wa oooo', error)
+    alert(`error: ${JSON.stringify(error.message, null, 2)}`);
   }
 
   if (isSuccess) {

@@ -14,8 +14,8 @@ import SchoolAndLearning from "../pages/onboarding/pages/academic-test/SchoolAnd
 const OnboardingRoutes = () => {
   return (
     <Routes>
-      {/* <Route path='/onboarding/auth' element={<OnboardingLayout />}> */}
-      <Route path="/" element={<OnboardingLayout />}>
+      <Route path='/onboarding/auth' element={<OnboardingLayout />}>
+      {/* <Route path="/" element={<OnboardingLayout />}> */}
         <Route index element={<Navigate to={"login"} replace />} />
         <Route path="login" element={<Login />} />
         <Route path="signup" element={<SignUp />} />
