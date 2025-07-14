@@ -3,7 +3,7 @@ import { teamMembers } from "./data";
 
 const TheTeam = () => {
   return (
-    <section>
+    <section className="mb-12">
       <div className="flex flex-col items-center text-center gap-6 mb-10">
         <h3 className="text-blue-4 font-semibold text-[36px]">Meet the Team</h3>
         <p className="text-purple-2 text-xl leading-[30px] max-w-[850px]">

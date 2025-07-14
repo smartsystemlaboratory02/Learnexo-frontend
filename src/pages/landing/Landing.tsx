@@ -3,6 +3,7 @@ import HeroHeader from "../../components/ui/landing/LandingHeader";
 import HowItWorks from "./HowItWorks";
 import Features from "./Features";
 import TheTeam from "./TheTeam";
+import Recommendation from "./Recommendation";
 
 const Landing = () => {
   return (
@@ -12,6 +13,7 @@ const Landing = () => {
       <HowItWorks />
       <Features />
       <TheTeam />
+      <Recommendation />
     </div>
   );
 };
