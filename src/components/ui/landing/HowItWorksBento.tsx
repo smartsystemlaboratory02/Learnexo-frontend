@@ -3,7 +3,7 @@ import type { ChildrenProps } from "../../../utils/types/baseTypes";
 import { ChevronRight } from "lucide-react";
 
 type HowItWorksBentoProps = ChildrenProps & {
-  topic: string;
+  title: string;
   info: string;
   selected: number;
   setSelected: React.Dispatch<React.SetStateAction<number>>;
@@ -11,7 +11,7 @@ type HowItWorksBentoProps = ChildrenProps & {
 };
 
 const HowItWorksBento: React.FC<HowItWorksBentoProps> = ({
-  topic,
+  title,
   info,
   selected,
   setSelected,
@@ -46,7 +46,7 @@ const HowItWorksBento: React.FC<HowItWorksBentoProps> = ({
             isSelected ? "text-white" : "text-black"
           }`}
         >
-          {topic}
+          {title}
         </p>
       </div>
 
