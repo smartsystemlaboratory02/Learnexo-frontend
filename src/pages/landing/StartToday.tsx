@@ -1,0 +1,32 @@
+import { Link } from "react-router-dom";
+import bigBlue from "../../assets/images/big-blue-arc.png";
+import smallBlue from "../../assets/images/small-blue-arc.png";
+
+const StartToday = () => {
+  return (
+    <div className="bg-green-1/2 py-36 relative mt-8 flex items-center flex-col  z-20 gap-[30px]">
+      <img src={bigBlue} alt="" className="absolute top-0 right-0 z-10" />
+      <img src={smallBlue} alt="" className="absolute top-0 right-0 z-10" />
+      <h3 className="text-5xl leading-[48px] z-20">
+        Start Learning Smarter — Today.
+      </h3>
+      <p className="text-xl leading-[32px] text-[#425466] z-20">
+        Whether you're learning alone, teaching a class, or supporting a child —
+        Learnexo grows with you.
+      </p>
+      <div className="flex flex-1 w-2/5 min-w-[520px]">
+        <input
+          type="email"
+          className="border border-[#667085] rounded-l-xl p-4 flex-1 outline-0 focus:outline-1"
+          placeholder="Enter your email address"
+          name="join"
+        />
+        <button className="bg-blue-3 hover:outline-1 text-white  border-0 py-3 px-8 rounded-r-lg text-sm font-semibold leading-[20px]">
+          <Link to="/onboarding/auth/signup">Join Learnexo Now</Link>
+        </button>
+      </div>
+    </div>
+  );
+};
+
+export default StartToday;

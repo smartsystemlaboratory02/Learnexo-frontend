@@ -5,13 +5,13 @@ import HeroRightComp from "../../components/ui/landing/HeroRightComp";
 
 const Hero = () => {
   return (
-    <div>
+    <div className="bg-green-1/2">
       <div className="flex p-16 gap-54 items-center justify-between">
         <HeroRightComp />
         <HeroLeftComp />
       </div>
-      <ConcentricCircles position="top-40 left-66"/>
-      <ConcentricCircles position="top-120 -right-8"/>
+      <ConcentricCircles position="top-40 left-66" />
+      <ConcentricCircles position="top-120 -right-8" />
 
       <Colabs />
     </div>
