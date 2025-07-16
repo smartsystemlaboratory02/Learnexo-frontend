@@ -1,8 +1,19 @@
-// import React from 'react'
+import { useEffect } from "react";
 import successimg from "../../../../assets/images/success.png";
 import MainButton from "../../../../components/ui/MainButton";
+import { useNavigate } from "react-router-dom";
 
 const ResetPasswordSuccess = () => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const navTimeout = setTimeout(() => {
+      navigate('/onboarding/test/')
+    }, 3000);
+
+    return () => clearTimeout(navTimeout);
+  }, []);
+
   return (
     <div className="flex flex-col gap-6">
       <div className="w-fit mx-auto">

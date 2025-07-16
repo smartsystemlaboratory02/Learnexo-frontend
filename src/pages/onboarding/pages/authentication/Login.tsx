@@ -5,15 +5,39 @@ import BlueTextLink from "../../../../components/ui/BluetextLink";
 import { Link } from "react-router-dom";
 import AltOnboardingMethods from "../../components/AltOnboardingMethods";
 import { useAppForm } from "../../../../utils/services/form";
+import { useMutation } from "@tanstack/react-query";
+import { loginUserRequest } from "../../../../utils/queries/auth";
+import Spinner from "../../../../components/ui/Spinner";
 
 const Login = () => {
+  const {
+    mutate: loginMutation,
+    data: response,
+    isPending,
+    isError,
+    isSuccess,
+    error,
+  } = useMutation({
+    mutationFn: loginUserRequest,
+    mutationKey: ["login"],
+  });
+
+  if (isError) {
+    console.log('wahala tih wa oooo', error)
+    alert(`error: ${JSON.stringify(error.message, null, 2)}`);
+  }
+
+  if (isSuccess) {
+    alert(`success: ${JSON.stringify(response, null, 2)}`);
+  }
+
   const loginForm = useAppForm({
     defaultValues: {
       email: "",
       password: "",
     },
-    onSubmit: async ({ value }) => {
-      alert(JSON.stringify(value, null, 2));
+    onSubmit: ({ value }) => {
+      loginMutation(value);
     },
   });
 
@@ -57,7 +81,7 @@ const Login = () => {
                 value={value}
                 onBlur={field.handleBlur}
                 onChange={(event) => field.handleChange(event.target.value)}
-                error={ isValid ? undefined : errors[0]}
+                error={isValid ? undefined : errors[0]}
               />
             );
           }}
@@ -65,17 +89,30 @@ const Login = () => {
 
         <loginForm.AppField
           name="password"
-          children={(field) => (
-            <field.Input
-              placeholder="password"
-              type="password"
-              name="password"
-              value={field.state.value}
-              onBlur={field.handleBlur}
-              onChange={(event) => field.handleChange(event?.target.value)}
-              visibility={true}
-            />
-          )}
+          validators={{
+            onBlur: ({ value }) => {
+              if (!value) {
+                return "Password is required";
+              }
+            },
+          }}
+          children={(field) => {
+            const { value, meta } = field.state;
+            const { isValid, errors } = meta;
+
+            return (
+              <field.Input
+                placeholder="password"
+                type="password"
+                name="password"
+                value={value}
+                onBlur={field.handleBlur}
+                onChange={(event) => field.handleChange(event?.target.value)}
+                visibility={true}
+                error={isValid ? undefined : errors[0]}
+              />
+            );
+          }}
         />
 
         <span className="text-right">
@@ -85,7 +122,9 @@ const Login = () => {
         </span>
 
         <loginForm.AppForm>
-          <loginForm.MainButton submit>Login</loginForm.MainButton>
+          <loginForm.MainButton submit>
+            {isPending ? <Spinner /> : "Login"}
+          </loginForm.MainButton>
         </loginForm.AppForm>
       </form>
 

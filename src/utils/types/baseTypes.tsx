@@ -1,14 +1,20 @@
 export type ChildrenProps = {
-    children?: React.ReactNode
-}
+  children?: React.ReactNode;
+};
 
 export type Option = {
-    value: string,
-    label: string
-}
+  value: string;
+  label: string;
+};
 
 export type BaseQuestion = {
   index: number;
   question: string;
   options: Option[];
+};
+
+export type Headers = {
+  "Access-Control-Allow-Credentials": string;
+  Authorization: string;
+  "Content-Type"?: string;
 };
