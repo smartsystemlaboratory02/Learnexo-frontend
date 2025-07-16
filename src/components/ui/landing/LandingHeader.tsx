@@ -14,7 +14,7 @@ const HeroHeader = () => {
       </div>
 
       <div className="flex items-center gap-4">
-        <Link to={"/onboarding/auth/signin"}>Sign in</Link>
+        <Link to={"/onboarding/auth/signup"}>Sign in</Link>
         <button className="w-fit bg-blue-3 text-white font-bold py-2.5 px-4 rounded-2xl hover:scale-105 transition-all duration-300 border-4 border-pink-1">
           <Link to={"/onboarding/auth/login"}>Create free account</Link>
         </button>

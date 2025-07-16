@@ -6,22 +6,22 @@ import progress from "../../../assets/images/progress-circle.png";
 
 const HeroLeftComp = () => {
   return (
-    <div className="relative w-fit mx-16">
-      <span className="absolute top-1/3 -left-30">
+    <div className="relative w-fit mx-16 ">
+      <span className="absolute top-1/3 -left-30 z-20">
         <FloatingModal title="All Tailored Subjects">
           <img src={tailoredImg} alt="TailoredImg" />
         </FloatingModal>
       </span>
-      <span className="absolute top-4/5 -right-16">
+      <span className="absolute top-4/5 -right-16 z-20">
         <FloatingModal title="Learning management">
           <img src={management} alt="Learning management" />
         </FloatingModal>
       </span>
-      <span className="absolute -right-4">
+      <span className="absolute -right-4 z-20">
         <FloatingModalVert />
       </span>
 
-      <div className="relative w-[500px] h-[500px] rounded-full">
+      <div className="relative w-[500px] h-[500px] rounded-full z-10">
         <div className="w-full h-full absolute -top-6 -left-6 border border-blue-3 -z-20 rounded-full" />
         <div className="w-full h-full rounded-full overflow-hidden relative -z-10 bg-blue-3">
           <img
