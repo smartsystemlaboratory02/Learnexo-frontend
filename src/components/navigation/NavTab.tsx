@@ -35,10 +35,8 @@ const NavTab: React.FC<NavTabProps> = ({
           }`
         }
         onClick={() => {
-          console.log(subNavs);
           setActive(to);
           setIsOpen(!isOpen);
-          console.log(isOpen);
         }}
       >
         {({ isActive }) => (
@@ -56,7 +54,7 @@ const NavTab: React.FC<NavTabProps> = ({
             {subNavs && (
               <ChevronDown
                 className={`transition-all ease-in-out duration-500 ${
-                  isOpen || "rotate-180 "
+                  isOpen && "rotate-180 "
                 }`}
               />
             )}
