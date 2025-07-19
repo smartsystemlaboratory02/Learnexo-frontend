@@ -1,4 +1,3 @@
-import { BookMarked } from "lucide-react";
 import BentoBox from "./BentoBox";
 import { Link } from "react-router-dom";
 import VerticalDropdown from "./VerticalDropdown";
