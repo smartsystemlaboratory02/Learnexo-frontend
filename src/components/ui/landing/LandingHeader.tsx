@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import Logo from "../Logo";
 import Navbar from "./Navbar";
-import Search from "./Search";
+import Search from "../form/Search";
 
 const HeroHeader = () => {
   return (
@@ -9,7 +9,7 @@ const HeroHeader = () => {
       <Logo />
 
       <div className="flex mx-14 items-center gap-8">
-        <Search />
+        <Search placeholder="Want to learn?" name="landing-search"/>
         <Navbar />
       </div>
 
