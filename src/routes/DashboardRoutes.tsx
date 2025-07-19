@@ -1,11 +1,11 @@
 import {Routes, Route} from 'react-router-dom'
-import DashboardLayout from '../layouts/DashboardLayout'
+import MainLayout from '../layouts/MainLayout'
 import Dashboard from '../pages/dashboard/Dashboard';
 
 const DashboardRoutes = () => {
   return (
     <Routes>
-      <Route path="/dashboard" element={<DashboardLayout />}>
+      <Route path="/dashboard" element={<MainLayout />}>
         <Route index element={<Dashboard />} />
       </Route>
     </Routes>

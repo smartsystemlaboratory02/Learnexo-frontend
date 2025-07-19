@@ -1,16 +1,16 @@
 import { Outlet } from "react-router-dom";
 import Sidebar from "../components/navigation/Sidebar";
 
-const DashboardLayout = () => {
+const MainLayout = () => {
   return (
-    <div>
+    <main className="flex">
       <Sidebar />
 
-      <div className="border h-screen">
+      <div className="border w-full">
         <Outlet />
       </div>
-    </div>
+    </main>
   );
 };
 
-export default DashboardLayout;
+export default MainLayout;
