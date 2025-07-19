@@ -4,7 +4,9 @@ import Sidebar from "../components/navigation/Sidebar";
 const MainLayout = () => {
   return (
     <main className="flex">
-      <Sidebar />
+      <div className="shrink-0 w-[320px] max-h-screen h-screen overflow-y-scroll scroll-smooth">
+        <Sidebar />
+      </div>
 
       <div className="border w-full">
         <Outlet />

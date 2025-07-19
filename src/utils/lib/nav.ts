@@ -14,9 +14,10 @@ export const sidebarNavs: NavLinkType[] = [
   {
     label: "dashboard",
     Icon: LayoutDashboardIcon,
+    subNavs: ["overview", "notifications", "analytics", "reports"]
   },
   {
-    label: "course",
+    label: "courses",
     Icon: Layers,
   },
   {

@@ -5,4 +5,5 @@ export type NavLinkType = {
   Icon: React.ForwardRefExoticComponent<
     Omit<LucideProps, "ref"> & React.RefAttributes<SVGSVGElement>
   >;
+  subNavs?: string[]
 };
