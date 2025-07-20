@@ -35,7 +35,7 @@ const Dashboard = () => {
         <CourseProgress title={"courses"} courses={courseProgress} />
       </div>
 
-      <Activities title="activity feed" activities={activityFeed} />
+      <Activities title="Activity Feed" activities={activityFeed} />
     </div>
   );
 };
