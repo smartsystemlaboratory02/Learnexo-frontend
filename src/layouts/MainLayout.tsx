@@ -1,5 +1,6 @@
 import { Outlet } from "react-router-dom";
 import Sidebar from "../components/navigation/Sidebar";
+import Header from "@/components/ui/Header";
 
 const MainLayout = () => {
   return (
@@ -8,7 +9,8 @@ const MainLayout = () => {
         <Sidebar />
       </div>
 
-      <div className="border w-full">
+      <div className="p-6 w-full">
+        <Header />
         <Outlet />
       </div>
     </main>

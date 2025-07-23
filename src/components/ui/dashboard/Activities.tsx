@@ -8,7 +8,7 @@ type ActivitiesProps = {
 
 const Activities: React.FC<ActivitiesProps> = ({ title, activities }) => {
   return (
-    <div className=" border-gray-6 border rounded-md w-fit">
+    <div className=" border-gray-3 border rounded-md w-fit h-fit min-w-60">
       <div className="w-full p-3">
         <p className="text-lg leading-7 font-medium capitalize">{title}</p>
       </div>

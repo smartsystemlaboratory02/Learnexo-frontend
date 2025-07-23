@@ -3,20 +3,20 @@ import { Link } from "react-router-dom";
 import VerticalDropdown from "./VerticalDropdown";
 import book from "../../../assets/icons/book.png";
 
-type LearningReccomendationProps = {
+type SubjectRecommendationProps = {
   subject: string;
-  topic: string;
+  // topic: string;
   to: string;
 };
 
-const LearningReccomendation: React.FC<LearningReccomendationProps> = ({
+const SubjectRecommendation: React.FC<SubjectRecommendationProps> = ({
   subject,
-  topic,
+  // topic,
   to,
 }) => {
   return (
     <BentoBox>
-      <div className="flex justify-between items-center pb-3 border-b-gray-4 border-b">
+      <div className="flex justify-between items-center pb-3 border-b-gray-4 border-b min-w-50 w-full shrink-0">
         <div className="flex gap-4 items-center">
           <img src={book} alt={subject} />
           <p className="font-medium capitalize leading-[20px] text-sm">
@@ -26,8 +26,11 @@ const LearningReccomendation: React.FC<LearningReccomendationProps> = ({
         <VerticalDropdown />
       </div>
       <div className="flex justify-between items-center py-2">
-        <p className="text-gray-500 text-xs">{topic}</p>
-        <Link to={to} className="bg-blue-3 text-white px-2.5 py-0.5 text-[10px]">
+        {/* <p className="text-gray-500 text-xs">{topic}</p> */}
+        <Link
+          to={to}
+          className="bg-blue-3 text-white px-2.5 py-0.5 text-[10px]"
+        >
           Start
         </Link>
       </div>
@@ -35,4 +38,4 @@ const LearningReccomendation: React.FC<LearningReccomendationProps> = ({
   );
 };
 
-export default LearningReccomendation;
+export default SubjectRecommendation;

@@ -10,7 +10,7 @@ type MetricBentoProps = {
 const MetricBento: React.FC<MetricBentoProps> = ({ topic, metric, info }) => {
   return (
     <BentoBox>
-      <div className="flex flex-col gap-2">
+      <div className="flex flex-col gap-4 min-w-50 w-full shrink-0">
         <div className="flex justify-between">
           <p className="capitalize">{topic}</p>
           <VerticalDropdown />
