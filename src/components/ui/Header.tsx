@@ -24,8 +24,8 @@ const Header = () => {
         <div className="border-2 border-gray-4 rounded-lg p-1.5 w-11 h-11 flex items-center justify-center hover:scale-105 transition duration-300 ease-in-out">
           <Bell color="#BBBBBB" />
         </div>
-        <div className="border-2 border-gray-4 rounded-lg p-0.5 h-11 flex items-center justify-between gap-3 pr-3">
-          <Link to="../profile">
+        <div className="border-2 border-gray-4 rounded-lg p-0.5 h-11 flex items-center justify-between gap-3 pr-3 cursor-pointer">
+          <Link to="./profile" >
             <Avatar className="rounded-md h-full aspect-square">
               <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
               {/* From backend */}
@@ -34,6 +34,7 @@ const Header = () => {
               </AvatarFallback>
             </Avatar>
           </Link>
+
           <div>
             <p className="font-semibold text-xs leading-4">Username</p>
             <p className="text-gray-6 text-[10px] ">UserRole</p>

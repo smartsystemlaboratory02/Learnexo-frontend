@@ -1,8 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import OnboardingRoutes from "./OnboardingRoutes";
 import Landing from "../pages/landing/Landing";
-import DashboardRoutes from "./DashboardRoutes";
-import CourseRoutes from "./CourseRoutes";
+import DashboardRoutes from "./MainRoutes";
 
 const AppRoutes = () => {
   return (
@@ -12,7 +11,6 @@ const AppRoutes = () => {
       </Routes>
       <OnboardingRoutes />
       <DashboardRoutes />
-      <CourseRoutes />
     </BrowserRouter>
   );
 };

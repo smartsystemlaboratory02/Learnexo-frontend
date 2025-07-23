@@ -11,7 +11,7 @@ type CourseProgressProps = {
 const CourseProgress: React.FC<CourseProgressProps> = ({ title, courses }) => {
   return (
     <BentoBox>
-      <div>
+      <div className="min-w-[240px]">
         <p className="w-full pb-2  border-b border-b-gray-4 font-medium capitalize text-sm">
           {title}
         </p>
