@@ -1,6 +1,5 @@
 import React from "react";
 import Aside from "../pages/onboarding/components/Aside";
-// import type { ChildrenProps } from '../../utils/types/baseTypes'
 import { Outlet, useNavigate } from "react-router-dom";
 import { MoveLeftIcon } from "lucide-react";
 

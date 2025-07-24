@@ -1,9 +1,19 @@
-import React from 'react'
+import React from "react";
 
-const Check:React.FC = () => {
+type CheckInputProps = {
+  state: boolean;
+  setState: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
+const Check: React.FC<CheckInputProps> = ({ state, setState }) => {
   return (
-    <input type="checkbox" className='w-[18px] h-[18px] bg-white rounded-sm'/>
-  )
-}
+    <input
+      type="checkbox"
+      className="w-4.5 h-4.5 bg-white rounded-sm"
+      checked={state}
+      onChange={() => setState(!state)}
+    />
+  );
+};
 
-export default Check
+export default Check;

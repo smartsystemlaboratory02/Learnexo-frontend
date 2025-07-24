@@ -12,7 +12,7 @@ export const useRequest = async (
 
   let headers: Headers = {
     "Access-Control-Allow-Credentials": "true",
-    Authorization: `Bearer ${getSessionStorage("access_token", "")}`,
+    Authorization: `Bearer ${getSessionStorage("accessToken", "")}`,
   };
 
   if (!(body instanceof FormData)) {

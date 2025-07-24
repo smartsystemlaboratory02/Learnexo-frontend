@@ -2,14 +2,18 @@
 import HeaderText from "../../components/HeaderText";
 import Or from "../../components/Or";
 import BlueTextLink from "../../../../components/ui/BluetextLink";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import AltOnboardingMethods from "../../components/AltOnboardingMethods";
 import { useAppForm } from "../../../../utils/services/form";
 import { useMutation } from "@tanstack/react-query";
 import { loginUserRequest } from "../../../../utils/queries/auth";
 import Spinner from "../../../../components/ui/Spinner";
+import { toast } from "sonner";
+import { setSessionStorage } from "@/utils/hooks/getSessionStorage";
 
 const Login = () => {
+  const navigate = useNavigate();
+
   const {
     mutate: loginMutation,
     data: response,
@@ -19,16 +23,27 @@ const Login = () => {
     error,
   } = useMutation({
     mutationFn: loginUserRequest,
-    mutationKey: ["login"],
+    mutationKey: ["loginRequest"],
   });
 
   if (isError) {
-    console.log('wahala tih wa oooo', error)
-    alert(`error: ${JSON.stringify(error.message, null, 2)}`);
+    toast.error(error.message);
   }
 
   if (isSuccess) {
-    alert(`success: ${JSON.stringify(response, null, 2)}`);
+    console.log(response);
+    setSessionStorage("accessToken", response.data.accessToken);
+    const userData = response.data.user;
+    console.log(userData);
+
+    Object.entries(userData).forEach(([key, value]) => {
+      setSessionStorage(
+        `user${key.charAt(0).toUpperCase() + key.slice(1)}`,
+        value
+      );
+    });
+    toast.success(response.message);
+    navigate("../../../dashboard");
   }
 
   const loginForm = useAppForm({

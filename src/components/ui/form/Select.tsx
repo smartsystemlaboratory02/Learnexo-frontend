@@ -1,6 +1,7 @@
 // import { ArrowDown } from 'lucide-react';
-import React from 'react'
-import type { Option } from '../../../utils/types/baseTypes';
+import React from "react";
+import type { Option } from "../../../utils/types/baseTypes";
+import FieldError from "./FieldError";
 
 type SelectProps = {
   placeholder: string;
@@ -10,9 +11,22 @@ type SelectProps = {
   half?: boolean;
   size?: number;
   options: Option[];
+  onChange?: (e: React.ChangeEvent<HTMLSelectElement>) => void;
+  onBlur?: (e: React.FocusEvent<HTMLSelectElement>) => void;
+  onFocus?: (e: React.FocusEvent<HTMLSelectElement>) => void;
+  error?: string;
 };
 
-const Select: React.FC<SelectProps> = ({ placeholder, name, half, options }) => {
+const Select: React.FC<SelectProps> = ({
+  placeholder,
+  name,
+  half,
+  options,
+  onBlur,
+  onChange,
+  onFocus,
+  error,
+}) => {
   return (
     <div
       className={`${
@@ -22,9 +36,9 @@ const Select: React.FC<SelectProps> = ({ placeholder, name, half, options }) => 
       <select
         className={`w-full border border-gray-1/60 rounded-md py-4 px-5 outline-none text-gray-1/40 capitalize select_input min-w-80 md:min-w-0 mlg:min-w-80 lgd:min-w-0`}
         name={name}
-        //   onChange={onChange}
-        //   onBlur={onBlur}
-        //   onFocus={onFocus}
+        onChange={onChange}
+        onBlur={onBlur}
+        onFocus={onFocus}
       >
         {/* <button>
           <selectedcontent></selectedcontent>
@@ -48,8 +62,9 @@ const Select: React.FC<SelectProps> = ({ placeholder, name, half, options }) => 
           ))}
         </div>
       </select>
+      {error && <FieldError>{error}</FieldError>}
     </div>
   );
-}
+};
 
-export default Select
+export default Select;

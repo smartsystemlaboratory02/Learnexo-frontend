@@ -10,15 +10,19 @@ import PersonalAndContactInfo from "../pages/onboarding/pages/academic-test/Pers
 import ChooseSubject from "../pages/onboarding/pages/academic-test/ChooseSubject";
 import AcademicTest from "../pages/onboarding/pages/academic-test/AcademicTest";
 import SchoolAndLearning from "../pages/onboarding/pages/academic-test/SchoolAndLearning";
+import ConfirmOTP from "@/pages/onboarding/pages/authentication/ConfirmOTP";
 
 const OnboardingRoutes = () => {
   return (
     <Routes>
-      <Route path='/onboarding/auth' element={<OnboardingLayout />}>
-      {/* <Route path="/" element={<OnboardingLayout />}> */}
-        <Route index element={<Navigate to={"login"} replace />} />
+      <Route path="auth/" element={<OnboardingLayout />}>
+        <Route
+          index
+          element={<Navigate to="login" replace />}
+        />
         <Route path="login" element={<Login />} />
         <Route path="signup" element={<SignUp />} />
+        <Route path="confirmOTP" element={<ConfirmOTP />} />
         <Route path="forgotpassword" element={<ForgotPassword />} />
         <Route path="forgotpassword/checkemail" element={<CheckEmail />} />
         <Route path="resetpassword" element={<ResetPassword />} />
@@ -28,7 +32,7 @@ const OnboardingRoutes = () => {
         />
       </Route>
 
-      <Route path="/onboarding/test" element={<OnboardingLayout />}>
+      <Route path="test/" element={<OnboardingLayout />}>
         <Route
           index
           element={<Navigate to="personalandcontactinfo" replace />}
