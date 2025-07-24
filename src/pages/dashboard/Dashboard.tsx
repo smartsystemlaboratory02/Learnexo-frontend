@@ -6,7 +6,7 @@ import ActivitiesTable from "@/components/ui/dashboard/AssessmentsTable";
 
 const Dashboard = () => {
   return (
-    <div className="">
+    <div className="border border-black">
       <div className="flex gap-4 justify-between">
         <div className="flex flex-col gap-6 w-full">
           <div className="flex flex-wrap gap-6">
@@ -28,10 +28,10 @@ const Dashboard = () => {
             </div>
           </div>
 
-          <ActivitiesTable />
+          {/* <ActivitiesTable /> */}
         </div>
 
-        <Activities title="Activity Feed" activities={activityFeed} />
+        {/* <Activities title="Activity Feed" activities={activityFeed} /> */}
       </div>
     </div>
   );

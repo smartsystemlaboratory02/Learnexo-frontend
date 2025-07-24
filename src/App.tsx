@@ -1,4 +1,5 @@
 import "./App.css";
+import { Toaster } from "sonner";
 import AppRoutes from "./routes";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
@@ -13,6 +14,7 @@ declare global {
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
+      <Toaster position="top-right"/>
       <AppRoutes />
     </QueryClientProvider>
   );

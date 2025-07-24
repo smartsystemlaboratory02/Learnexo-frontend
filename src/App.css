@@ -1,6 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 
 @import "tailwindcss";
 @import "tailwindcss-animated";
@@ -9,43 +9,43 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-  --font-inter: 'Inter', sans-serif;
-  --font-montserrat: 'Montserrat', sans-serif;
-  --font-dmsans: 'DM Sans', sans-serif;
+  --font-inter: "Inter", sans-serif;
+  --font-montserrat: "Montserrat", sans-serif;
+  --font-dmsans: "DM Sans", sans-serif;
 
   --breakpoint-mlg: 56rem;
   --breakpoint-lgd: 77rem;
 
-  --color-white-2: #F7F9FC;
+  --color-white-2: #f7f9fc;
 
-  --color-blue-2: #312ECB;
-  --color-blue-3: #0D47A1;
+  --color-blue-2: #312ecb;
+  --color-blue-3: #0d47a1;
   --color-blue-4: #101828;
   --color-blue-5: #263238;
-  --color-blue-6: #37474F;
+  --color-blue-6: #37474f;
 
   --color-gray-1: #070308;
-  --color-gray-2: #8F8F8F;
-  --color-gray-3: #D9D9D9;
-  --color-gray-4: #BBBBBB;
-  --color-gray-5: #F5F5F4;
+  --color-gray-2: #8f8f8f;
+  --color-gray-3: #d9d9d9;
+  --color-gray-4: #bbbbbb;
+  --color-gray-5: #f5f5f4;
   --color-gray-6: #667085;
 
   --color-black-1: #040308;
 
-  --color-green-1: #24BB8C;
-  --color-green-2: #3BC49A;
-  --color-green-3: #00C9A7;
-  --color-green-4: #EAFFF9;
+  --color-green-1: #24bb8c;
+  --color-green-2: #3bc49a;
+  --color-green-3: #00c9a7;
+  --color-green-4: #eafff9;
 
-  --color-purple-1: #4A148C;
+  --color-purple-1: #4a148c;
   --color-purple-2: #757095;
 
-  --color-pink-1: #F4EBFF;
+  --color-pink-1: #f4ebff;
 }
 
 * {
-  font-family: 'DM Sans', 'sans-serif';
+  font-family: "DM Sans", "sans-serif";
 }
 
 select,
@@ -74,11 +74,10 @@ select,
   justify-items: flex-start;
   gap: 20px;
   padding: 10px;
-
 }
 
 .select-option-container {
-  border: 1px solid #B3B3B3;
+  border: 1px solid #b3b3b3;
   border-radius: 12px;
   overflow: hidden;
 }
@@ -101,7 +100,7 @@ select,
 
 .select_option:hover,
 .select_option:focus {
-  background: #F7F9FC;
+  background: #f7f9fc;
 }
 
 .select_option:checked {
@@ -143,7 +142,7 @@ input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
-    transition: background-color 5000s ease-in-out 0s;
+  transition: background-color 5000s ease-in-out 0s;
 }
 
 @theme inline {
@@ -192,7 +191,7 @@ input:-webkit-autofill:active {
   --card-foreground: oklch(0.129 0.042 264.695);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.129 0.042 264.695);
-  --primary: oklch(0.208 0.042 265.755);
+  --primary: var(--color-blue-3);
   --primary-foreground: oklch(0.984 0.003 247.858);
   --secondary: oklch(0.968 0.007 247.896);
   --secondary-foreground: oklch(0.208 0.042 265.755);
@@ -203,7 +202,7 @@ input:-webkit-autofill:active {
   --destructive: oklch(0.577 0.245 27.325);
   --border: oklch(0.929 0.013 255.508);
   --input: oklch(0.929 0.013 255.508);
-  --ring: oklch(0.704 0.04 256.788);
+  --ring: var(--color-blue-2);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
@@ -260,4 +259,13 @@ input:-webkit-autofill:active {
   body {
     @apply bg-background text-foreground;
   }
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }

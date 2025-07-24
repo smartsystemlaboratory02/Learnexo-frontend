@@ -8,9 +8,9 @@ const AppRoutes = () => {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Landing />} />
+        <Route path="/onboarding/*" element={<OnboardingRoutes />} />
+        <Route path="/dashboard/*" element={<DashboardRoutes />} />
       </Routes>
-      <OnboardingRoutes />
-      <DashboardRoutes />
     </BrowserRouter>
   );
 };

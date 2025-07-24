@@ -12,7 +12,7 @@ const NavTabs = () => {
   }, [location.pathname]);
 
   return (
-    <nav className="w-full flex flex-col gap-4">
+    <nav className="w-full flex flex-col gap-4 scrollbar-hide">
       {sidebarNavs.map((nav) => (
         <NavTab
           key={nav.label}
