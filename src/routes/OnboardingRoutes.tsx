@@ -11,15 +11,20 @@ import ChooseSubject from "../pages/onboarding/pages/academic-test/ChooseSubject
 import AcademicTest from "../pages/onboarding/pages/academic-test/AcademicTest";
 import SchoolAndLearning from "../pages/onboarding/pages/academic-test/SchoolAndLearning";
 import ConfirmOTP from "@/pages/onboarding/pages/authentication/ConfirmOTP";
+// import { useQuery } from "@tanstack/react-query";
+// import { assessmentsRequest } from "@/utils/queries/auth";
+import QuestionnaireTest from "@/pages/onboarding/pages/academic-test/QuestionnaireTest";
 
 const OnboardingRoutes = () => {
+  // const {isPending, error, data, isLoading} = useQuery({
+  //   queryKey: ['assessmentQuery'],
+  //   queryFn: assessmentsRequest
+  // })
+
   return (
     <Routes>
       <Route path="auth/" element={<OnboardingLayout />}>
-        <Route
-          index
-          element={<Navigate to="login" replace />}
-        />
+        <Route index element={<Navigate to="login" replace />} />
         <Route path="login" element={<Login />} />
         <Route path="signup" element={<SignUp />} />
         <Route path="confirmOTP" element={<ConfirmOTP />} />
@@ -44,6 +49,7 @@ const OnboardingRoutes = () => {
         <Route path="schoolandlearning" element={<SchoolAndLearning />} />
         <Route path="choosesubject" element={<ChooseSubject />} />
         <Route path="academictest/:id" element={<AcademicTest />} />
+        <Route path="questionnairetest/:id" element={<QuestionnaireTest />} />
       </Route>
     </Routes>
   );

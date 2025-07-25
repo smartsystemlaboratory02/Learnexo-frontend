@@ -20,6 +20,7 @@ const Option: React.FC<Pick<QuestionProps, 'setSelected' | 'selected'> & OptionP
 }
 
 const Question = ({ questionObject }: { questionObject: QuestionProps }) => {
+    console.log(questionObject)
     const { question, options, index, selected, setSelected } = questionObject
 
     return (
@@ -32,11 +33,11 @@ const Question = ({ questionObject }: { questionObject: QuestionProps }) => {
             {question}
           </p>
           <div className="flex gap-3 flex-col">
-            {options.map((option) => (
+            {Object.entries(options).map(([option, value]) => (
               <Option
-                key={option.value}
-                label={option.label as "a" | "b" | "c" | "d"}
-                value={option.value}
+                key={option}
+                label={option.toUpperCase() as "a" | "b" | "c" | "d"}
+                value={value}
                 setSelected={setSelected}
                 selected={selected}
               />

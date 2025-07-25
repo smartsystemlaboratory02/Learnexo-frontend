@@ -10,7 +10,8 @@ export type Option = {
 export type BaseQuestion = {
   index: number;
   question: string;
-  options: Option[];
+  options: string[];
+  id: string;
 };
 
 export type Headers = {

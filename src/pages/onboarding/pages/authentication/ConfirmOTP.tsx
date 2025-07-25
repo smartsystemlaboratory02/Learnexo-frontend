@@ -8,9 +8,11 @@ import {
   InputOTPGroup,
   InputOTPSlot,
 } from "@/components/ui/input-otp";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useMutation } from "@tanstack/react-query";
-import { ConfirmSignUpOTP } from "@/utils/queries/auth";
+import { confirmSignUpOTPRequest } from "@/utils/queries/auth";
+import { toast } from "sonner";
+import Spinner from "@/components/ui/Spinner";
 
 const ConfirmOTP = () => {
   const location = useLocation();
@@ -27,15 +29,29 @@ const ConfirmOTP = () => {
     isSuccess,
     error,
   } = useMutation({
-    mutationFn: ConfirmSignUpOTP,
+    mutationFn: confirmSignUpOTPRequest,
     mutationKey: ["confirmSignupOTPRequest"],
   });
+
+  useEffect(() => {
+    if (isError) {
+      toast.error(error.message);
+    }
+  }, [isError, error]);
+
+  if (isSuccess) {
+    console.log(response);
+    toast.success("OTP verified successfully");
+    setTimeout(() => {
+      navigate("../login");
+    }, 2000);
+  }
 
   return (
     <div className="flex flex-col gap-12">
       <HeaderText
         title="Confirm OTP"
-        description="Enter the OTP sent to your email to veriffy your signup status."
+        description="Enter the OTP sent to your email to verify your signup status."
       />
 
       <InputOTP
@@ -54,13 +70,15 @@ const ConfirmOTP = () => {
         </InputOTPGroup>
       </InputOTP>
 
-      {/* <div className="flex flex-col gap-6 mt-25">
-        <MainButton onClick={() => navigate("checkemail")}>Send</MainButton>{" "}
-        Add timeout
-        <MainButton white link="/onboarding/auth/login">
-          Back to Login
+      <div className="flex flex-col gap-6">
+        <MainButton
+          onClick={() => {
+            confirmOTPMutation({ otp: otpValue, email });
+          }}
+        >
+          {isPending ? <Spinner /> : "Send OTP"}
         </MainButton>
-      </div> */}
+      </div>
     </div>
   );
 };

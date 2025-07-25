@@ -7,12 +7,12 @@ import { useEffect, useState } from "react";
 import type { BaseQuestion } from "../../../../utils/types/baseTypes";
 import MainButton from "../../../../components/ui/MainButton";
 import { useQuery } from "@tanstack/react-query";
-import { assessmentsRequest } from "@/utils/queries/auth";
+import { questionnairesRequest } from "@/utils/queries/auth";
 import Spinner from "@/components/ui/Spinner";
 import { transformQuestion } from "@/utils/funcs";
 import { toast } from "sonner";
 
-const AcademicTest = () => {
+const QuestionnaireTest = () => {
   const { id } = useParams<{ id: string }>();
   const idInt = parseInt(id ?? "");
   const navigate = useNavigate();
@@ -24,8 +24,8 @@ const AcademicTest = () => {
     isSuccess,
     error,
   } = useQuery({
-    queryKey: ["academicquestions"],
-    queryFn: assessmentsRequest,
+    queryKey: ["questionnairequestions"],
+    queryFn: questionnairesRequest,
     staleTime: 1000 * 60 * 5,
   });
 
@@ -69,7 +69,7 @@ const AcademicTest = () => {
 
   return (
     <div className="flex flex-col gap-6">
-      <HeaderText title="Academic Test" />
+      <HeaderText title="Questionnaire" />
       <TestInstruction numberOfQuestions={numberOfQuestions}>
         From the multiple choice questions, you are to choose answer between
         option A - E
@@ -82,7 +82,7 @@ const AcademicTest = () => {
           <div className="md:mr-auto mlg:mr-0 lgd:mr-auto">
             <MainButton
               white
-              onClick={() => navigate(`../academictest/${idInt - 1}`)}
+              onClick={() => navigate(`../questionnairetest/${idInt - 1}`)}
             >
               Previous Question
             </MainButton>
@@ -91,7 +91,7 @@ const AcademicTest = () => {
         {idInt < numberOfQuestions && (
           <div className="md:ml-auto mlg:ml-0 lgd:ml-auto">
             <MainButton
-              onClick={() => navigate(`../academictest/${idInt + 1}`)}
+              onClick={() => navigate(`../questionnairetest/${idInt + 1}`)}
             >
               Next Question
             </MainButton>
@@ -104,7 +104,7 @@ const AcademicTest = () => {
                 toast.warning("You cannot edit your answers after this step");
                 // submit answers
                 setTimeout(() => {
-                  navigate(`../questionnairetest/${numberOfQuestions + 1}`);
+                  navigate(`../../../dashboard`);
                 }, 2000);
               }}
             >
@@ -117,4 +117,4 @@ const AcademicTest = () => {
   );
 };
 
-export default AcademicTest;
+export default QuestionnaireTest;

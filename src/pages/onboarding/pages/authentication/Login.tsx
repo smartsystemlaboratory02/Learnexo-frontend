@@ -10,6 +10,7 @@ import { loginUserRequest } from "../../../../utils/queries/auth";
 import Spinner from "../../../../components/ui/Spinner";
 import { toast } from "sonner";
 import { setSessionStorage } from "@/utils/hooks/getSessionStorage";
+import { useEffect } from "react";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -26,9 +27,11 @@ const Login = () => {
     mutationKey: ["loginRequest"],
   });
 
-  if (isError) {
-    toast.error(error.message);
-  }
+  useEffect(() => {
+    if (isError) {
+      toast.error(error.message);
+    }
+  }, [isError, error]);
 
   if (isSuccess) {
     console.log(response);

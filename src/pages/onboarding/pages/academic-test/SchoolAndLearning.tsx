@@ -1,43 +1,286 @@
-import FormRow from "../../../../components/ui/form/FormRow"
-import Input from "../../../../components/ui/form/Input"
-import PageProgress from "../../../../components/ui/form/PageProgress"
-import Select from "../../../../components/ui/form/Select"
-import MainButton from "../../../../components/ui/MainButton"
-import HeaderText from "../../components/HeaderText"
+import { useLocation, useNavigate } from "react-router-dom";
+import FormRow from "../../../../components/ui/form/FormRow";
+import PageProgress from "../../../../components/ui/form/PageProgress";
+import MainButton from "../../../../components/ui/MainButton";
+import HeaderText from "../../components/HeaderText";
+import { removeAndReturn } from "@/utils/funcs";
+import {
+  classOptions,
+  gradeOptions,
+  learningStyleOptions,
+} from "../../service";
+import { useAppForm } from "@/utils/services/form";
+import { useMutation } from "@tanstack/react-query";
+import { onboardingRequest } from "@/utils/queries/auth";
+import { useEffect } from "react";
+import { toast } from "sonner";
+import Spinner from "@/components/ui/Spinner";
 
 const SchoolAndLearning = () => {
-    return (
-        <div className="flex flex-col gap-10">
-            <PageProgress totalSteps={2} step={2} />
-            <HeaderText title="School & Learning Background" description="Share your academic details to help us build your perfect learning path."></HeaderText>
+  const navigate = useNavigate();
+  const location = useLocation();
+  const { prevValue } = location.state;
+  console.log(prevValue);
 
-            <form className="flex flex-col gap-10">
-                <FormRow>
-                    <Input placeholder="School name" name="school" half type="text" ></Input>
-                    <Select placeholder="Class" name="class" options={[]} half></Select>
-                </FormRow>
+  const {
+    mutate: onboardingMutation,
+    data: response,
+    isPending,
+    isError,
+    isSuccess,
+    error,
+  } = useMutation({
+    mutationFn: onboardingRequest,
+    mutationKey: ["onboardingRequest"],
+  });
 
-                <Select placeholder="Preferred learning style" name="learningStyle" options={[]}></Select>
+  useEffect(() => {
+    if (isError) {
+      toast.error(error.message);
+    }
+  }, [isError, error]);
 
-                <FormRow>
-                    <Input placeholder="School name" name="school" half type="text" ></Input>
-                    <Select placeholder="Last examination grade" name="lastExamGrade" options={[]} half></Select>
-                </FormRow>
+  const onboardingForm = useAppForm({
+    defaultValues: {
+      schoolName: "",
+      class: "",
+      learningStyle: "",
+      schoolAddress: "",
+      firstTerm: "",
+      secondTerm: "",
+      thirdTerm: "",
+    },
+    onSubmit: ({ value }) => {
+      const pastExam = {
+        firstTerm: removeAndReturn(value, "firstTerm"),
+        secondTerm: removeAndReturn(value, "secondTerm"),
+        thirdTerm: removeAndReturn(value, "thirdTerm"),
+      };
+      const newValue = { ...value, pastExam, ...prevValue };
+      console.log(newValue);
+      onboardingMutation(newValue);
+    },
+  });
 
-                <p className="font-medium text-[22px] text-blue-5">Past Examination Grade</p>
+  if (isSuccess) {
+    toast.success(response.message);
+    setTimeout(() => {
+      navigate(`../academictest/1`);
+    }, 2000);
+  }
 
-                <FormRow>
-                    <Select placeholder="first term grade" name="firstTerm" half options={[]} ></Select>
-                    <Select placeholder="second term grade" name="secondTerm" half options={[]} ></Select>
-                </FormRow>
-                
-                <Select placeholder="third term grade" name="thirdTerm" half options={[]} ></Select>
+  return (
+    <div className="flex flex-col gap-10">
+      <PageProgress totalSteps={2} step={2} />
+      <HeaderText
+        title="School & Learning Background"
+        description="Share your academic details to help us build your perfect learning path."
+      />
 
-                <MainButton>Proceed to take Test</MainButton>
+      <form
+        className="flex flex-col gap-10"
+        onSubmit={(e) => {
+          e.preventDefault();
+          onboardingForm.handleSubmit();
+        }}
+      >
+        <FormRow>
+          <onboardingForm.AppField
+            name="schoolName"
+            validators={{
+              onBlur: ({ value }) => {
+                if (!value) return "School name is required";
+                return undefined;
+              },
+            }}
+            children={(field) => (
+              <field.Input
+                placeholder="School name"
+                name="school"
+                type="text"
+                value={field.state.value}
+                onBlur={field.handleBlur}
+                onChange={(e) => field.handleChange(e.target.value)}
+                error={
+                  !field.state.meta.isValid
+                    ? field.state.meta.errors[0]
+                    : undefined
+                }
+                half
+              />
+            )}
+          />
+          <onboardingForm.AppField
+            name="class"
+            validators={{
+              onBlur: ({ value }) => {
+                if (!value) return "Class is required";
+                return undefined;
+              },
+            }}
+            children={(field) => (
+              <field.Select
+                placeholder="Class"
+                name="class"
+                value={field.state.value}
+                onBlur={field.handleBlur}
+                onChange={(e) => field.handleChange(e.target.value)}
+                options={classOptions}
+                error={
+                  !field.state.meta.isValid
+                    ? field.state.meta.errors[0]
+                    : undefined
+                }
+                half
+              />
+            )}
+          />
+        </FormRow>
 
-            </form>
-        </div>
-    )
-}
+        <onboardingForm.AppField
+          name="learningStyle"
+          validators={{
+            onBlur: ({ value }) => {
+              if (!value) return "Preferred learning style is required";
+              return undefined;
+            },
+          }}
+          children={(field) => (
+            <field.Select
+              placeholder="Preferred learning style"
+              name="learningStyle"
+              value={field.state.value}
+              onBlur={field.handleBlur}
+              onChange={(e) => field.handleChange(e.target.value)}
+              options={learningStyleOptions}
+              error={
+                !field.state.meta.isValid
+                  ? field.state.meta.errors[0]
+                  : undefined
+              }
+            />
+          )}
+        />
 
-export default SchoolAndLearning
+        <FormRow>
+          <onboardingForm.AppField
+            name="schoolAddress"
+            validators={{
+              onBlur: ({ value }) => {
+                if (!value) return "School address is required";
+                return undefined;
+              },
+            }}
+            children={(field) => (
+              <field.Input
+                placeholder="School address"
+                name="schoolAddress"
+                type="text"
+                value={field.state.value}
+                onBlur={field.handleBlur}
+                onChange={(e) => field.handleChange(e.target.value)}
+                error={
+                  !field.state.meta.isValid
+                    ? field.state.meta.errors[0]
+                    : undefined
+                }
+                half
+              />
+            )}
+          />
+        </FormRow>
+
+        <p className="font-medium text-[22px] text-blue-5">
+          Past Examination Grade
+        </p>
+
+        <FormRow>
+          <onboardingForm.AppField
+            name="firstTerm"
+            validators={{
+              onBlur: ({ value }) => {
+                if (!value) return "First term grade is required";
+                return undefined;
+              },
+            }}
+            children={(field) => (
+              <field.Select
+                placeholder="first term grade"
+                name="firstTerm"
+                value={field.state.value}
+                onBlur={field.handleBlur}
+                onChange={(e) => field.handleChange(e.target.value)}
+                options={gradeOptions}
+                error={
+                  !field.state.meta.isValid
+                    ? field.state.meta.errors[0]
+                    : undefined
+                }
+                half
+              />
+            )}
+          />
+          <onboardingForm.AppField
+            name="secondTerm"
+            validators={{
+              onBlur: ({ value }) => {
+                if (!value) return "Second term grade is required";
+                return undefined;
+              },
+            }}
+            children={(field) => (
+              <field.Select
+                placeholder="second term grade"
+                name="secondTerm"
+                value={field.state.value}
+                onBlur={field.handleBlur}
+                onChange={(e) => field.handleChange(e.target.value)}
+                options={gradeOptions}
+                error={
+                  !field.state.meta.isValid
+                    ? field.state.meta.errors[0]
+                    : undefined
+                }
+                half
+              />
+            )}
+          />
+        </FormRow>
+
+        <onboardingForm.AppField
+          name="thirdTerm"
+          validators={{
+            onBlur: ({ value }) => {
+              if (!value) return "Third term grade is required";
+              return undefined;
+            },
+          }}
+          children={(field) => (
+            <field.Select
+              placeholder="third term grade"
+              name="thirdTerm"
+              value={field.state.value}
+              onBlur={field.handleBlur}
+              onChange={(e) => field.handleChange(e.target.value)}
+              options={gradeOptions}
+              error={
+                !field.state.meta.isValid
+                  ? field.state.meta.errors[0]
+                  : undefined
+              }
+              half
+            />
+          )}
+        />
+
+        <onboardingForm.AppForm>
+          <MainButton submit>
+            {isPending ? <Spinner /> : "Proceed to take Test"}
+          </MainButton>
+        </onboardingForm.AppForm>
+      </form>
+    </div>
+  );
+};
+
+export default SchoolAndLearning;

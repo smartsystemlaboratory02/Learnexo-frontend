@@ -5,9 +5,13 @@ type LoginCredentials = {
   password: string;
 };
 
-type ConfirmSignUpOTPCredentials = {
+type ConfirmOTPCredentials = {
   email: string;
   otp: string;
+};
+
+type SendOTPCredentials = {
+  email: string;
 };
 
 type SignUpCredentials = LoginCredentials & {
@@ -15,6 +19,26 @@ type SignUpCredentials = LoginCredentials & {
   lastName: string;
   role: string;
   userImage?: string;
+};
+
+type OnboardingCredentials = {
+  stateOfOrigin: string;
+  residentialAddress: string;
+  language: string;
+  photo?: string;
+  pastExam: {
+    thirdTerm: string;
+    secondTerm: string;
+    firstTerm: string;
+  };
+  learningStyle: string;
+  schoolAddress: string;
+  schoolName: string;
+  state: string;
+  town: string;
+  gender: string;
+  class: string;
+  dateOfBirth: Date;
 };
 
 export const loginUserRequest = async ({ email, password }: LoginCredentials) =>
@@ -40,16 +64,66 @@ export const signupUserRequest = async ({
       role,
       email,
       password,
-      userImage: "https://image.com",
     })
   );
 
-export const ConfirmSignUpOTP = async ({
+export const confirmSignUpOTPRequest = async ({
   email,
   otp,
-}: ConfirmSignUpOTPCredentials) =>
+}: ConfirmOTPCredentials) =>
+  await useRequest(
+    "/api/v1/auth/verify",
+    "POST",
+    JSON.stringify({ email, otp })
+  );
+
+export const confirmOTPRequest = async ({
+  email,
+  otp,
+}: ConfirmOTPCredentials) =>
   await useRequest(
     "/api/v1/auth/verify-otp",
     "POST",
     JSON.stringify({ email, otp })
   );
+
+export const sendOTPToEmailRequest = async ({ email }: SendOTPCredentials) =>
+  await useRequest(`/api/v1/auth/send-otp/${email}`);
+
+export const resetPasswordRequest = async ({
+  email,
+  password,
+}: LoginCredentials) =>
+  await useRequest(
+    "/api/v1/auth/reset-password",
+    "POST",
+    JSON.stringify({
+      email,
+      password,
+    })
+  );
+
+export const onboardingRequest = async (values: OnboardingCredentials) =>
+  await useRequest(
+    "/api/v1/auth/onboarding",
+    "POST",
+    JSON.stringify({
+      ...values,
+    })
+  );
+
+export const uploadImageRequest = async (file: File) => {
+  const formData = new FormData();
+  formData.append("file", file);
+
+  return await useRequest("/api/v1/upload", "POST", formData);
+};
+
+
+export const assessmentsRequest = async () => {
+  return await useRequest("/api/v1/assessment/Assessment");
+};
+
+export const questionnairesRequest = async () => {
+  return await useRequest("/api/v1/assessment/Questionnaire");
+};

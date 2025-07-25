@@ -7,17 +7,17 @@ import { Link, useNavigate } from "react-router-dom";
 import AltOnboardingMethods from "../../components/AltOnboardingMethods";
 import FormRow from "@/components/ui/form/FormRow";
 import { useAppForm } from "@/utils/services/form";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { signupUserRequest } from "@/utils/queries/auth";
 import { toast } from "sonner";
 import Spinner from "@/components/ui/Spinner";
-import EmailConfirmation from "../../components/EmailConfirmation";
+// import EmailConfirmation from "../../components/EmailConfirmation";
 
 const SignUp = () => {
   const [agreed, setAgreed] = useState<boolean>(false);
-  const [emailConfirmationOpen, setEmailConfirmationOpen] =
-    useState<boolean>(false);
+  // const [emailConfirmationOpen, setEmailConfirmationOpen] =
+  // useState<boolean>(false);
   const navigate = useNavigate();
 
   const signUpForm = useAppForm({
@@ -50,24 +50,23 @@ const SignUp = () => {
     mutationKey: ["signupRequest"],
   });
 
-  if (isError) {
-    toast.error(error.message);
-  }
+  useEffect(() => {
+    if (isError) {
+      toast.error(error.message);
+    }
+  }, [isError, error]);
 
   if (isSuccess) {
     toast.success(response.message);
-    setEmailConfirmationOpen(true);
     const email: string = signUpForm.getFieldValue("email");
     setTimeout(() => {
-      navigate("../confirmOTP", {
-        state: { email },
-      });
+      navigate("../confirmOTP", { state: { email } });
     }, 2000);
   }
 
   return (
     <div className="flex flex-col gap-6 md:gap-8">
-      {emailConfirmationOpen && <EmailConfirmation />}
+      {/* {emailConfirmationOpen && <EmailConfirmation />} */}
 
       <HeaderText title="create account" description="Already have an account?">
         <BlueTextLink>
