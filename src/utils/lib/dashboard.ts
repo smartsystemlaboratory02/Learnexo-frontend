@@ -10,23 +10,23 @@ export const courseProgress: SingleCourseProgressType[] = [
 
 export const activityFeed: SingleActivityType[] = [
   {
-    title: "Completed Lesson 10",
+    title: "Completed Analysis Assessment",
     to: "/dashboard",
-    topic: "Trigonometry & Ratio",
+    topic: "Onboarding",
   },
   {
     title: "Earned",
     to: "/dashboard",
-    topic: "Top score in Communication",
+    topic: "Latest Learner Badge",
   },
   {
-    title: "Completed Assessment",
+    title: "Signed In successfully",
     to: "/dashboard",
-    topic: "Pythagoras Theorem",
+    topic: "Onboarding",
   },
   {
-    title: "Completed Lesson 10",
+    title: "Signed Up successfully",
     to: "/dashboard",
-    topic: "Trigonometry & Ratio",
+    topic: "Onboarding",
   },
 ];

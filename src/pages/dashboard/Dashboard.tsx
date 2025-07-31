@@ -3,10 +3,16 @@ import SubjectRecommendation from "../../components/ui/dashboard/SubjectRecommen
 import MetricBento from "../../components/ui/dashboard/MetricBento";
 import { activityFeed } from "../../utils/lib/dashboard";
 import ActivitiesTable from "@/components/ui/dashboard/AssessmentsTable";
+import PageLoader from "@/components/ui/profile/PageLoader";
+import { useState } from "react";
 
 const Dashboard = () => {
+  const [progress, setProgress] = useState(5);
+
   return (
     <div className="border border-black">
+      {progress <= 100 && <PageLoader state={progress} setState={setProgress}/>}
+      
       <div className="flex gap-4 justify-between">
         <div className="flex flex-col gap-6 w-full">
           <div className="flex flex-wrap gap-6">
