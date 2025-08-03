@@ -39,6 +39,7 @@ const PersonalAndContactInfo = () => {
       state: "",
       stateOfOrigin: "",
       language: "",
+      photo: "",
     },
     onSubmit: async ({ value }) => {
       value = { ...value, dateOfBirth: mmddyyyyToISO(value.dateOfBirth) };

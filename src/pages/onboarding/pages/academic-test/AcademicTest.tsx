@@ -3,7 +3,7 @@ import HeaderText from "../../components/HeaderText";
 import { handleSelect } from "../../service";
 import TestInstruction from "../../../../components/ui/TestInstruction";
 import Question from "../../../../components/ui/Question";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import type { BaseQuestion } from "../../../../utils/types/baseTypes";
 import MainButton from "../../../../components/ui/MainButton";
 import { useQuery } from "@tanstack/react-query";

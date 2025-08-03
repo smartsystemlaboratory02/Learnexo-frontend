@@ -59,9 +59,9 @@ const invoices = [
 const ActivitiesTable = () => {
   return (
     <BentoBox>
-      <h2 className="mb-4 font-semibold leading-5">My Assessments</h2>
+      <h2 className="mb-4 font-semibold leading-5 z-20">My Assessments</h2>
 
-      <Table className="table-fixed">
+      <Table className="table-fixed  min-w-150">
         <TableHeader>
           <TableRow>
             <TableHead>S/N</TableHead>

@@ -10,7 +10,7 @@ const Dashboard = () => {
   const [progress, setProgress] = useState(5);
 
   return (
-    <div className="border border-black">
+    <div className="">
       {progress <= 100 && <PageLoader state={progress} setState={setProgress}/>}
       
       <div className="flex gap-4 justify-between">
@@ -34,10 +34,10 @@ const Dashboard = () => {
             </div>
           </div>
 
-          {/* <ActivitiesTable /> */}
+          <ActivitiesTable />
         </div>
 
-        {/* <Activities title="Activity Feed" activities={activityFeed} /> */}
+        <Activities title="Activity Feed" activities={activityFeed} />
       </div>
     </div>
   );

@@ -34,13 +34,13 @@ const Profile = () => {
           <span className="font-semibold leading-5 text-black">
             Account type
           </span>
-          : UserAccountType
+          : Free
         </p>
         <p>
           <span className="font-semibold leading-5 text-black">
             Learning Style
           </span>
-          : UserLearningStyle
+          : Visual, Auditory
         </p>
       </div>
       <Separator />

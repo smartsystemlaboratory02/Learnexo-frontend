@@ -5,16 +5,16 @@ const BasicInfo = () => {
 
       <div className="grid grid-cols-[auto_1fr] w-fit font-sm leading-3.5 gap-6">
         <p className="text-gray-6 ">Age:</p>
-        <p>UserAge</p>
+        <p>14</p>
 
         <p className="text-gray-6 ">Grade/Class:</p>
-        <p>UserGrade</p>
+        <p>JSS 3</p>
 
         <p className="text-gray-6 ">Gender:</p>
-        <p>UserGender Watermelon Pooool</p>
+        <p>Male</p>
 
         <p className="text-gray-6 ">School:</p>
-        <p>UserSchool</p>
+        <p>Igbara Oke School</p>
       </div>
     </div>
   );

@@ -11,15 +11,15 @@ const ImageAndInfo = () => {
         </AvatarFallback>
       </Avatar>
       <div className="flex flex-col gap-2">
-        <p className="font-semibold leading-5">Firstname Lastname</p>
-        <p className="font-medium tsxt-sm">UserRole</p>
+        <p className="font-semibold leading-5">Covenant Adeosun</p>
+        <p className="font-medium tsxt-sm">Student</p>
         <div className="flex h-5 items-center gap-4 text-sm text-black">
           <p>
-            <span className="text-gray-6">Email: </span> userEmail@email.com
+            <span className="text-gray-6">Email: </span> covenantcrackslord01@gmail.com
           </p>
           <Separator orientation="vertical" />
           <p>
-            <span className="text-gray-6">Phone: </span> 9 09 20930920
+            <span className="text-gray-6">Phone: </span>(+234)  9 09 20930920
           </p>
         </div>
       </div>

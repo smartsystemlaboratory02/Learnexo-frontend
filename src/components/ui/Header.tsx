@@ -52,14 +52,14 @@ const UserImageAndInfo = () => {
           <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
           {/* From backend */}
           <AvatarFallback className="rounded-md h-full aspect-square">
-            CN
+            CJ
           </AvatarFallback>
         </Avatar>
       </Link>
 
       <div>
-        <p className="font-semibold text-xs leading-4">Username</p>
-        <p className="text-gray-6 text-[10px] ">UserRole</p>
+        <p className="font-semibold text-xs leading-4">CeeJay777</p>
+        <p className="text-gray-6 text-[10px] ">Student</p>
       </div>
     </div>
   );
