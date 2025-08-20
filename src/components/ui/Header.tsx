@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
-    <div className="flex-col w-full flex items-center gap-4 md:gap-6 p-4 mx-auto">
+    <div className="flex-col w-full flex items-center gap-4 md:gap-6 p-4 mx-auto mb-4">
       <div className="lgd:hidden">
         <Search placeholder="Search" name="main-search" />
       </div>
@@ -35,7 +35,7 @@ const WelcomeText = () => {
   return (
     <div className="flex flex-col md:gap-1 items-start w-fit">
       <p className="font-medium mlg:leading-9.5 mlg:text-[30px] md:leading-6 md:text-xl whitespace-nowrap mlg:mx-auto lg:mx-0">
-        Welcome back, UserFirstname
+        Welcome back, Covenant
       </p>
       <p className="text-gray-6 mlg:leading-6 md:leading-4 md:text-sm whitespace-nowrap text-xs mlg:text-base mlg:mx-auto lg:mx-0">
         Your learning management dashboard.
@@ -58,7 +58,7 @@ const UserImageAndInfo = () => {
       </Link>
 
       <div>
-        <p className="font-semibold text-xs leading-4">CeeJay777</p>
+        <p className="font-semibold text-xs leading-4">Covenant</p>
         <p className="text-gray-6 text-[10px] ">Student</p>
       </div>
     </div>

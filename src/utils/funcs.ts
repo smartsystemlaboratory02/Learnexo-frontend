@@ -23,8 +23,8 @@ export const mmddyyyyToISO = (dateStr: string): string => {
   return date.toISOString();
 };
 
-export const  transformQuestion = (apiQuestion: any): BaseQuestion => ({
-  index: parseInt(apiQuestion.questionNumber), // or just use questionNumber
+export const transformQuestion = (apiQuestion: any): BaseQuestion => ({
+  index: parseInt(apiQuestion.questionNumber),
   question: apiQuestion.question,
   options: apiQuestion.options,
   id: apiQuestion.id,

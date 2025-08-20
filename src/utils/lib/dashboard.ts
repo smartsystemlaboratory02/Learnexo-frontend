@@ -10,7 +10,7 @@ export const courseProgress: SingleCourseProgressType[] = [
 
 export const activityFeed: SingleActivityType[] = [
   {
-    title: "Completed Analysis Assessment",
+    title: "Completed an Assessment",
     to: "/dashboard",
     topic: "Onboarding",
   },

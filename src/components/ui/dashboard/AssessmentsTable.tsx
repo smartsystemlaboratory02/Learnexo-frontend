@@ -9,49 +9,67 @@ import {
 import BentoBox from "./BentoBox";
 import noData from "../../../assets/images/empty-table.png";
 
-const invoices = [
+const topics = [
   {
-    invoice: "INV001",
-    paymentStatus: "Paid ohefio owhf oifj p eifhe oiheihwf oihefoi iheifn opef",
-    totalAmount: "$250.00",
-    paymentMethod: "Credit Card",
+    sn: "001",
+    topic: "Comprehension - Main and Supporting Ideas",
+    score: "12%",
+    status: "Ongoing",
   },
   {
-    invoice: "INV002",
-    paymentStatus: "Pending",
-    totalAmount: "$150.00",
-    paymentMethod: "PayPal",
+    sn: "002",
+    topic: "Grammar - Parts of Speech",
+    score: "15%",
+    status: "Ongoing",
   },
   {
-    invoice: "INV003",
-    paymentStatus: "Unpaid",
-    totalAmount: "$350.00",
-    paymentMethod: "Bank Transfer",
+    sn: "003",
+    topic: "Writing - Formal and Informal Letters",
+    score: "16%",
+    status: "Ongoing",
   },
   {
-    invoice: "INV004",
-    paymentStatus: "Paid",
-    totalAmount: "$450.00",
-    paymentMethod: "Credit Card",
+    sn: "004",
+    topic: "Literature - Figures of Speech",
+    score: "20%",
+    status: "Ongoing",
   },
-  {
-    invoice: "INV005",
-    paymentStatus: "Paid",
-    totalAmount: "$550.00",
-    paymentMethod: "PayPal",
-  },
-  {
-    invoice: "INV006",
-    paymentStatus: "Pending",
-    totalAmount: "$200.00",
-    paymentMethod: "Bank Transfer",
-  },
-  {
-    invoice: "INV007",
-    paymentStatus: "Unpaid",
-    totalAmount: "$300.00",
-    paymentMethod: "Credit Card",
-  },
+  // {
+  //   invoice: "INV002",
+  //   paymentStatus: "Pending",
+  //   totalAmount: "$150.00",
+  //   paymentMethod: "PayPal",
+  // },
+  // {
+  //   invoice: "INV003",
+  //   paymentStatus: "Unpaid",
+  //   totalAmount: "$350.00",
+  //   paymentMethod: "Bank Transfer",
+  // },
+  // {
+  //   invoice: "INV004",
+  //   paymentStatus: "Paid",
+  //   totalAmount: "$450.00",
+  //   paymentMethod: "Credit Card",
+  // },
+  // {
+  //   invoice: "INV005",
+  //   paymentStatus: "Paid",
+  //   totalAmount: "$550.00",
+  //   paymentMethod: "PayPal",
+  // },
+  // {
+  //   invoice: "INV006",
+  //   paymentStatus: "Pending",
+  //   totalAmount: "$200.00",
+  //   paymentMethod: "Bank Transfer",
+  // },
+  // {
+  //   invoice: "INV007",
+  //   paymentStatus: "Unpaid",
+  //   totalAmount: "$300.00",
+  //   paymentMethod: "Credit Card",
+  // },
 ];
 
 // const invoices = undefined;
@@ -59,7 +77,7 @@ const invoices = [
 const ActivitiesTable = () => {
   return (
     <BentoBox>
-      <h2 className="mb-4 font-semibold leading-5 z-20">My Assessments</h2>
+      <h2 className="mb-4 font-semibold leading-5 z-20">Recommended topics</h2>
 
       <Table className="table-fixed  min-w-150">
         <TableHeader>
@@ -72,15 +90,15 @@ const ActivitiesTable = () => {
         </TableHeader>
 
         <TableBody>
-          {invoices ? (
-            invoices.map((invoice) => (
-              <TableRow key={invoice.invoice}>
-                <TableCell className="font-medium">{invoice.invoice}</TableCell>
+          {topics ? (
+            topics.map((topic) => (
+              <TableRow key={topic.sn}>
+                <TableCell className="font-medium">{topic.sn}</TableCell>
                 <TableCell className="w-2/5 truncate">
-                  {invoice.paymentStatus}
+                  {topic.topic}
                 </TableCell>
-                <TableCell>{invoice.paymentMethod}</TableCell>
-                <TableCell>{invoice.totalAmount}</TableCell>
+                <TableCell>{topic.score}</TableCell>
+                <TableCell>{topic.status}</TableCell>
               </TableRow>
             ))
           ) : (

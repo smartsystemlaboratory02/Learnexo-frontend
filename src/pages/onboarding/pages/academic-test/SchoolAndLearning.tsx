@@ -65,7 +65,7 @@ const SchoolAndLearning = () => {
   if (isSuccess) {
     toast.success(response.message);
     setTimeout(() => {
-      navigate(`../academictest/1`);
+      navigate("../choosesubject");
     }, 2000);
   }
 

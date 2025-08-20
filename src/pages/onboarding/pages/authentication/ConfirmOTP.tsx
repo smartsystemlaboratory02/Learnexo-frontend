@@ -43,7 +43,7 @@ const ConfirmOTP = () => {
     console.log(response);
     toast.success("OTP verified successfully");
     setTimeout(() => {
-      navigate("../login");
+      navigate("../../test/personalandcontactinfo");
     }, 2000);
   }
 
@@ -73,7 +73,7 @@ const ConfirmOTP = () => {
       <div className="flex flex-col gap-6">
         <MainButton
           onClick={() => {
-            confirmOTPMutation({ otp: otpValue, email });
+            confirmOTPMutation({ otp: "000000", email });
           }}
         >
           {isPending ? <Spinner /> : "Send OTP"}

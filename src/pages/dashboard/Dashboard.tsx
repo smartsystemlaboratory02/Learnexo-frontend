@@ -20,8 +20,8 @@ const Dashboard = () => {
               topic="today's goal"
               info="Practice 5 questions today"
             />
-            <MetricBento topic="courses in progress" metric="0" />
-            <MetricBento topic="assessment quest" metric="0" />
+            <MetricBento topic="courses in progress" metric="1" />
+            <MetricBento topic="assessment quest" metric="1" />
           </div>
 
           <div>
@@ -29,7 +29,7 @@ const Dashboard = () => {
               Subjects Recommendation
             </h2>
             <div className="flex flex-wrap gap-6 w-full">
-              <SubjectRecommendation subject="mathematics" to="/dashboard" />
+              {/* <SubjectRecommendation subject="mathematics" to="/dashboard" /> */}
               <SubjectRecommendation subject="english" to="/dashboard" />
             </div>
           </div>

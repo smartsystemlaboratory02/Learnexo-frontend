@@ -64,6 +64,7 @@ export const signupUserRequest = async ({
       role,
       email,
       password,
+      userImage: "https://image.com",
     })
   );
 
