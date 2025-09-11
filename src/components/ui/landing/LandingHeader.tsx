@@ -5,7 +5,7 @@ import Search from "../form/Search";
 
 const HeroHeader = () => {
   return (
-    <div className="md:px-4  xl:px-10 py-6 flex items-center justify-between shadow-sm">
+    <div className="md:px-4 xl:px-10 py-6 flex items-center justify-between shadow-sm gap-6">
       <Logo />
 
       <div className="flex mx-14 items-center gap-8">
