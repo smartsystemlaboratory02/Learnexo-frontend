@@ -1,9 +1,7 @@
 // import React from 'react'
 import HeaderText from "../../components/HeaderText";
-import Or from "../../components/Or";
 import BlueTextLink from "../../../../components/ui/BluetextLink";
 import { Link, useNavigate } from "react-router-dom";
-import AltOnboardingMethods from "../../components/AltOnboardingMethods";
 import { useAppForm } from "../../../../utils/services/form";
 import { useMutation } from "@tanstack/react-query";
 import { loginUserRequest } from "../../../../utils/queries/auth";
@@ -146,9 +144,9 @@ const Login = () => {
         </loginForm.AppForm>
       </form>
 
-      <Or />
+      {/* <Or /> */}
 
-      <AltOnboardingMethods />
+      {/* <AltOnboardingMethods /> */}
     </div>
   );
 };

@@ -1,10 +1,8 @@
 import HeaderText from "../../components/HeaderText";
 import Check from "@/components/ui/form/Check";
-import Or from "../../components/Or";
 import BlueTextLink from "@/components/ui/BluetextLink";
 import { roleOptions } from "../../service";
 import { Link, useNavigate } from "react-router-dom";
-import AltOnboardingMethods from "../../components/AltOnboardingMethods";
 import FormRow from "@/components/ui/form/FormRow";
 import { useAppForm } from "@/utils/services/form";
 import { useEffect, useState } from "react";
@@ -12,7 +10,6 @@ import { useMutation } from "@tanstack/react-query";
 import { signupUserRequest } from "@/utils/queries/auth";
 import { toast } from "sonner";
 import Spinner from "@/components/ui/Spinner";
-// import EmailConfirmation from "../../components/EmailConfirmation";
 
 const SignUp = () => {
   const [agreed, setAgreed] = useState<boolean>(false);
@@ -90,6 +87,7 @@ const SignUp = () => {
                 return undefined;
               },
             }}
+            
             children={(field) => (
               <field.Input
                 placeholder="First name"
@@ -258,9 +256,9 @@ const SignUp = () => {
         </signUpForm.AppForm>
       </form>
 
-      <Or />
+      {/* <Or />
 
-      <AltOnboardingMethods />
+      <AltOnboardingMethods /> */}
     </div>
   );
 };
