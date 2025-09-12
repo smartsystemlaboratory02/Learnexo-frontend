@@ -9,7 +9,7 @@ const HowItWorks = () => {
   const [selectedOption, setSelectedOption] = useState<number>(1);
 
   return (
-    <div className="px-16">
+    <div className="px-16 py-12">
       <div className="flex flex-col w-fit items-center mx-auto gap-[14px] ">
         <img src={howitworks} alt="How it works" />
         <h2 className="capitalize text-black font-extrabold text-[40px] leading-[48px] tracking-[-3%]">

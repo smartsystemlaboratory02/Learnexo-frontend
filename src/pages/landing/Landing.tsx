@@ -19,8 +19,8 @@ const Landing = () => {
       <StartToday />
       <LandingFooter />
 
-      {/* <ConcentricCircles position="lg:top-30 lg:left-40 top-20 -left-12" /> */}
-      {/* <ConcentricCircles position="lg:top-80 lg:right-8 top-100 -right-12" /> */}
+      <ConcentricCircles position="lg:top-30 lg:left-40 top-20 -left-12" />
+      <ConcentricCircles position="lg:top-80 lg:right-8 top-100 -right-12" />
     </div>
   );
 };
