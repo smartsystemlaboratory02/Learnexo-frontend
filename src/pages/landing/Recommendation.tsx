@@ -3,10 +3,10 @@ import jacobjones from "../../assets/images/jacobjames.png";
 
 const Recommendation = () => {
   return (
-    <section className="p-24 bg-green-1/2">
+    <section className="p-12 md:p-24 bg-green-1/2">
       <div className="flex items-center flex-col text-center">
         <Logo />
-        <h3 className="my-8 text-black text-5xl leading-[60px] tracking-[-2%] font-medium">
+        <h3 className="my-8 text-black text-3xl md:text-5xl md:leading-[60px] tracking-[-2%] font-medium">
           Both my kids are on Learnexo — one uses VR, the other loves gamified
           quizzes
         </h3>
