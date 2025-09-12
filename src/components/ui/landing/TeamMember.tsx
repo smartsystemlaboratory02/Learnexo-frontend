@@ -15,7 +15,7 @@ const TeamMember: React.FC<TeammemberProps> = ({
   x,
 }) => {
   return (
-    <div className="flex flex-col items-center p-6 bg-[#F9FAFB] text-center w-[23%]">
+    <div className="flex flex-col items-center p-6 bg-[#F9FAFB] text-center max-w-xs">
       <div className="w-3/5">{children}</div>
       <div>
         <p className="text-black font-medium text-lg leading-[28px]">{name}</p>

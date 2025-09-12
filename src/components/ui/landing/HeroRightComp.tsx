@@ -1,12 +1,12 @@
 const HeroRightComp = () => {
   return (
     <div className="">
-      <h1 className="text-6xl font-bold text-blue-4 leading-[82px] tracking-[-0.5px] mb-5">
+      <h1 className="text-6xl font-bold text-blue-4 leading-10 tracking-[-0.5px] mb-5 mt-6 max-w-[17ch]">
         AI-Powered <span className="text-blue-3">Learning</span> for Every{" "}
         <span className="text-purple-1">Students</span>
       </h1>
 
-      <p className="leading-[180%] text-[#646464] mb-9">
+      <p className="leading-[180%] text-[#646464] mb-9 mt-6 max-w-[60ch] sm:text-lg">
         Unleash your potential with Learnexo — a personalized, inclusive
         learning platform powered by AI, designed to adapt to your pace, style,
         and needs.

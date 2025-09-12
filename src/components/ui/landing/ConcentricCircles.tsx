@@ -6,11 +6,11 @@ type CircleProps = {
 
 const ConcentricCircles:React.FC<CircleProps> = ({position}) => {
   return (
-    <div className={`fixed ${position} -z-10`}>
+    <div className={`fixed ${position}`}>
       <Circle>
         <Circle>
           <Circle>
-            <div className="border border-blue-3/30 w-36 h-36 rounded-full" />
+            <div className="border border-blue-3/30 lg:w-36 w-24 md:w-28 rounded-full aspect-square" />
           </Circle>
         </Circle>
       </Circle>
@@ -20,7 +20,7 @@ const ConcentricCircles:React.FC<CircleProps> = ({position}) => {
 
 const Circle: React.FC<ChildrenProps> = ({ children }) => {
   return (
-    <div className="w-fit h-fit rounded-full border border-blue-3/30 p-12">
+    <div className="w-fit h-fit rounded-full border border-blue-3/30 p-6 md:p-10 lgd:p-12">
       {children}
     </div>
   );

@@ -16,11 +16,6 @@ import ConfirmOTP from "@/pages/onboarding/pages/authentication/ConfirmOTP";
 import QuestionnaireTest from "@/pages/onboarding/pages/academic-test/QuestionnaireTest";
 
 const OnboardingRoutes = () => {
-  // const {isPending, error, data, isLoading} = useQuery({
-  //   queryKey: ['assessmentQuery'],
-  //   queryFn: assessmentsRequest
-  // })
-
   return (
     <Routes>
       <Route path="auth/" element={<OnboardingLayout />}>

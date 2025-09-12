@@ -7,7 +7,7 @@ import { features } from "./data";
 
 const Features = () => {
   return (
-    <section className="px-28 my-20">
+    <section className="lgd:px-28 px-12 my-20">
       <div className="flex flex-col items-center text-center gap-6">
         <h3 className="text-blue-4 font-semibold text-[36px]">
           Explore Features
@@ -17,7 +17,7 @@ const Features = () => {
         </p>
       </div>
 
-      <div className="flex gap-24 mt-24 items-center">
+      <div className="flex gap-12 lgd:gap-24 lgd:mt-24 mt-12 items-center flex-col lgd:flex-row">
         <div className="flex gap-4 items-center w-fit shrink-0">
           <div className="flex flex-col gap-4">
             <img src={img1} alt="image 1" />
@@ -29,7 +29,7 @@ const Features = () => {
           </div>
         </div>
 
-        <div className="flex flex-wrap justify-between gap-y-6">
+        <div className="grid justify-center md:grid-cols-2 align-middle gap-6">
           {features.map((feature) => {
             const { title, info, img } = feature;
             return (

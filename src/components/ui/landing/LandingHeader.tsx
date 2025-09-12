@@ -1,26 +1,37 @@
-import { Link } from "react-router-dom";
 import Logo from "../Logo";
 import Navbar from "./Navbar";
-import Search from "../form/Search";
+import { Button } from "@/components/ui/button";
+import { NavigationSheet } from "./NavigationSheet";
+import { Link } from "react-router-dom";
 
-const HeroHeader = () => {
+const LandingHeader = () => {
   return (
-    <div className="md:px-4 xl:px-10 py-6 flex items-center justify-between shadow-sm gap-6">
-      <Logo />
+    <nav className="h-16 bg-background border-b sticky top-0 left-0">
+      <div className="h-full flex items-center justify-between max-w-(--breakpoint-xl) mx-auto px-4 sm:px-6 lg:px-8">
+        <Logo />
 
-      <div className="flex mx-14 items-center gap-8">
-        <Search placeholder="Want to learn?" name="landing-search"/>
-        <Navbar />
-      </div>
+        {/* Desktop Menu */}
+        <Navbar className="hidden md:block" />
 
-      <div className="flex items-center gap-4 w-full text-sm justify-end">
-        <Link to={"/onboarding/auth/signup"}>Sign in</Link>
-        <button className=" bg-blue-3 text-white font-bold py-2.5 px-4 rounded-2xl hover:scale-105 transition-all duration-300 border-4 border-pink-1">
-          <Link to={"/onboarding/auth/login"}>Create free account</Link>
-        </button>
+        <div className="flex items-center gap-3">
+          <Link to="/onboarding/auth/signup">
+            <Button variant="outline" className="hidden sm:inline-flex">
+              Sign In
+            </Button>
+          </Link>
+
+          <Link to="/onboarding/auth/login">
+            <Button>Login</Button>
+          </Link>
+
+          {/* Mobile Menu */}
+          <div className="md:hidden">
+            <NavigationSheet />
+          </div>
+        </div>
       </div>
-    </div>
+    </nav>
   );
 };
 
-export default HeroHeader;
+export default LandingHeader;

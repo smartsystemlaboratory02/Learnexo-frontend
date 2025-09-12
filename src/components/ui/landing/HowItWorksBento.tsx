@@ -28,7 +28,7 @@ const HowItWorksBento: React.FC<HowItWorksBentoProps> = ({
 
   return (
     <div
-      className={`flex flex-col gap-8 py-8 px-10 w-1/3 rounded-2xl ${
+      className={`flex flex-col gap-8 py-8 px-10 w-1/3 min-w-xs rounded-2xl ${
         isSelected ? "bg-blue-3" : "border bg-white border-gray-3 shadow-sm"
       }`}
       onClick={() => setSelected(index)}

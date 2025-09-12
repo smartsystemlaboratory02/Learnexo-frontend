@@ -1,16 +1,16 @@
 import Hero from "./Hero";
-import HeroHeader from "../../components/ui/landing/LandingHeader";
+// import HeroHeader from "../../components/ui/landing/LandingHeader";
 import HowItWorks from "./HowItWorks";
 import Features from "./Features";
 import TheTeam from "./TheTeam";
 import Recommendation from "./Recommendation";
 import StartToday from "./StartToday";
 import LandingFooter from "../../components/ui/landing/LandingFooter";
+import ConcentricCircles from "@/components/ui/landing/ConcentricCircles";
 
 const Landing = () => {
   return (
-    <div className="bg-white">
-      <HeroHeader />
+    <div className="bg-white z-20">
       <Hero />
       <HowItWorks />
       <Features />
@@ -18,6 +18,9 @@ const Landing = () => {
       <Recommendation />
       <StartToday />
       <LandingFooter />
+
+      {/* <ConcentricCircles position="lg:top-30 lg:left-40 top-20 -left-12" /> */}
+      {/* <ConcentricCircles position="lg:top-80 lg:right-8 top-100 -right-12" /> */}
     </div>
   );
 };

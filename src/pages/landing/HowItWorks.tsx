@@ -20,7 +20,7 @@ const HowItWorks = () => {
         </p>
       </div>
 
-      <div className="px-12 py-16 flex justify-between items-center">
+      <div className="px-12 py-16 flex flex-wrap justify-center gap-6 items-center">
         {howItWorksSteps.map((step, index) => {
           const { title, info, img } = step;
           return (
@@ -42,7 +42,7 @@ const HowItWorks = () => {
         </p>
       </div>
 
-      <div className="flex gap-10 pt-10">
+      <div className="flex gap-10 pt-10 flex-wrap justify-center">
         {howItWorksBentos.map((bento, index) => {
           const { title, info, img } = bento;
 
