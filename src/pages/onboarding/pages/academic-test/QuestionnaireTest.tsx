@@ -15,7 +15,7 @@ import { toast } from "sonner";
 const QuestionnaireTest = () => {
   const { id } = useParams<{ id: string }>();
   const idInt = parseInt(id ?? "");
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const [answers, setAnswers] = useState<Record<number, string>>({});
 
   const {
