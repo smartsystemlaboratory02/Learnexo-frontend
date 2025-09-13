@@ -10,7 +10,7 @@ import ConcentricCircles from "@/components/ui/landing/ConcentricCircles";
 
 const Landing = () => {
   return (
-    <div className="bg-white z-20">
+    <div className="bg-white z-20 max-w-[1440]">
       <Hero />
       <HowItWorks />
       <Features />

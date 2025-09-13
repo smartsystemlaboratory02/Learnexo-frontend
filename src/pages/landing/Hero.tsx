@@ -9,7 +9,7 @@ const Hero = () => {
     <div className="mb-6">
       <HeroHeader />
       <div className="flex items-center justify-center">
-        <div className="max-w-(--breakpoint-xl) w-full mx-auto grid lg:grid-cols-2 gap-12 px-6 py-12">
+        <div className="w-full mx-auto grid lg:grid-cols-2 gap-12 py-12">
           <div>
             <h1 className="text-5xl leading-12 md:text-6xl font-bold text-blue-4 md:leading-18 tracking-[-0.5px] mb-5 mt-6 max-w-[17ch]">
               AI-Powered <span className="text-blue-3">Learning</span> for Every{" "}
