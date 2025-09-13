@@ -8,7 +8,7 @@ const questionBlocks = raw
   .filter((block) => block.trim());
 
 const questions = questionBlocks
-  .map((block, idx) => {
+  .map((block) => {
     const lines = block
       .split("\n")
       .map((l) => l.trim())
