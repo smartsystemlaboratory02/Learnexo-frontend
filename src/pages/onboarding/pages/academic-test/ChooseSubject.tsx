@@ -24,7 +24,7 @@ const ChooseSubject = () => {
         placeholder="Rate your understanding of the subject selected"
         options={subjectsOptions}
       ></Select> */}
-      <MainButton onClick={() => navigate(`../academictest/1`)}>
+      <MainButton onClick={() => navigate(`../questionnairetest/1`)}>
         Proceed to Questions
       </MainButton>
     </div>

@@ -51,12 +51,14 @@ const AcademicTest = () => {
   const numberOfQuestions = academicQuestions.data.length;
   console.log(academicQuestions, numberOfQuestions, idInt);
 
-  const mapOptionsObjectToArray = (optionsObj: Record<string, string>): string[] => {
+  const mapOptionsObjectToArray = (
+    optionsObj: Record<string, string>
+  ): string[] => {
     // Ensure order: a, b, c, d, e
-    return ['a', 'b', 'c', 'd', 'e'].map(key => optionsObj[key]);
+    return ["a", "b", "c", "d", "e"].map((key) => optionsObj[key]);
   };
 
-  const questions = academicQuestions.data.map(q => ({
+  const questions = academicQuestions.data.map((q) => ({
     ...q,
     options: mapOptionsObjectToArray(q.options),
   }));
@@ -65,9 +67,9 @@ const AcademicTest = () => {
     .map(transformQuestion)
     .find((q: BaseQuestion) => q.index === idInt);
 
-  // if (!question) {
-  //   return <div>Question not found</div>;
-  // }
+  if (!question) {
+    return <div>Question not found</div>;
+  }
 
   const questionObject: BaseQuestion & {
     selected: string;
