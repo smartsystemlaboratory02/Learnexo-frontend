@@ -6,7 +6,7 @@ import ForgotPassword from "../pages/onboarding/pages/authentication/ForgotPassw
 import CheckEmail from "../pages/onboarding/pages/authentication/ForgotPasswordCheckEmail";
 import ResetPassword from "../pages/onboarding/pages/authentication/ResetPassword";
 import ResetPasswordSuccess from "../pages/onboarding/pages/authentication/ResetPasswordSuccess";
-import PersonalAndContactInfo from "../pages/onboarding/pages/academic-test/PersonalAndContactInfo";
+import PersonalAndContactInfo from "../pages/onboarding/pages/academic-test/PersonalAndContactInfoTest";
 import ChooseSubject from "../pages/onboarding/pages/academic-test/ChooseSubject";
 import AcademicTest from "../pages/onboarding/pages/academic-test/AcademicTest";
 import SchoolAndLearning from "../pages/onboarding/pages/academic-test/SchoolAndLearning";
