@@ -6,10 +6,10 @@ import ForgotPassword from "../pages/onboarding/pages/authentication/ForgotPassw
 import CheckEmail from "../pages/onboarding/pages/authentication/ForgotPasswordCheckEmail";
 import ResetPassword from "../pages/onboarding/pages/authentication/ResetPassword";
 import ResetPasswordSuccess from "../pages/onboarding/pages/authentication/ResetPasswordSuccess";
-import PersonalAndContactInfo from "../pages/onboarding/pages/academic-test/PersonalAndContactInfoTest";
+import PersonalAndContactInfo from "../pages/onboarding/pages/academic-test/PersonalAndContactInfo";
 import ChooseSubject from "../pages/onboarding/pages/academic-test/ChooseSubject";
 import AcademicTest from "../pages/onboarding/pages/academic-test/AcademicTest";
-import SchoolAndLearning from "../pages/onboarding/pages/academic-test/SchoolAndLearning";
+import SchoolAndLearning from "../pages/onboarding/pages/academic-test/SchoolAndLearningTest";
 import ConfirmOTP from "@/pages/onboarding/pages/authentication/ConfirmOTP";
 // import { useQuery } from "@tanstack/react-query";
 // import { assessmentsRequest } from "@/utils/queries/auth";

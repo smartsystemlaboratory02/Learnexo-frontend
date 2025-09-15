@@ -1,17 +1,48 @@
 import { useNavigate } from "react-router-dom";
-import FormRow from "../../../../components/ui/form/FormRow";
 import PageProgress from "../../../../components/ui/form/PageProgress";
 import MainButton from "../../../../components/ui/MainButton";
 import HeaderText from "../../components/HeaderText";
 import ImagePlaceholder from "../../components/ImagePlaceholder";
 import { genderOptions, languageOptions } from "../../service";
-import { useAppForm } from "@/utils/services/form";
-import { mmddyyyyToISO } from "@/utils/funcs";
 import { useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { toast } from "sonner";
 import { uploadImageRequest } from "@/utils/queries/auth";
 import Spinner from "@/components/ui/Spinner";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import {
+  Form,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormControl,
+  FormMessage,
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { Selector } from "@/components/ui/form/Selector";
+import { format } from "date-fns";
+import { Button } from "@/components/ui/button";
+import { Calendar } from "@/components/ui/calendar";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+
+const formSchema = z.object({
+  dateOfBirth: z.date().refine((val) => val !== null && val !== undefined, {
+    message: "Date of birth is required",
+  }),
+  gender: z.string().nonempty("This field is required"),
+  residentialAddress: z.string().nonempty("This field is required"),
+  town: z.string().nonempty("This field is required"),
+  state: z.string().nonempty("This field is required"),
+  stateOfOrigin: z.string().nonempty("This field is required"),
+  language: z.string().nonempty("This field is required"),
+  photo: z.string(),
+});
 
 const PersonalAndContactInfo = () => {
   const navigate = useNavigate();
@@ -30,9 +61,9 @@ const PersonalAndContactInfo = () => {
     mutationKey: ["uploadImageRequest"],
   });
 
-  const form = useAppForm({
+  const form = useForm<z.infer<typeof formSchema>>({
     defaultValues: {
-      dateOfBirth: "",
+      dateOfBirth: new Date(),
       gender: "",
       residentialAddress: "",
       town: "",
@@ -41,32 +72,37 @@ const PersonalAndContactInfo = () => {
       language: "",
       photo: "",
     },
-    onSubmit: async ({ value }) => {
-      value = { ...value, dateOfBirth: mmddyyyyToISO(value.dateOfBirth) };
-      let prevValue = value;
+    resolver: zodResolver(formSchema),
+  });
 
-      if (selectedImage) {
-        uploadPhoto(selectedImage);
+  const onSubmit = async (value: z.infer<typeof formSchema>) => {
+    console.log("Okay");
+    const dobISO = value.dateOfBirth.toISOString();
+    let prevValue = { ...value, dateOfBirth: dobISO };
 
-        if (isError) {
-          toast.error(error.message);
-          setTimeout(() => {
-            navigate("../schoolandlearning", { state: { prevValue } });
-          }, 2000);
-        }
+    if (selectedImage) {
+      uploadPhoto(selectedImage);
 
-        if (isSuccess) {
-          console.log(response);
-          toast.success("Image uploaded");
-          prevValue = { ...prevValue, photo: response.data.secure_url };
+      if (isError) {
+        toast.error(error.message);
+        setTimeout(() => {
           navigate("../schoolandlearning", { state: { prevValue } });
-          return;
-        }
+        }, 2000);
       }
 
-      //   navigate("../schoolandlearning", { state: { prevValue } });
-    },
-  });
+      if (isSuccess) {
+        console.log(response);
+        toast.success("Image uploaded");
+        prevValue = { ...prevValue, photo: response.data.secure_url };
+        setTimeout(() => {
+          navigate("../schoolandlearning", { state: { prevValue } });
+        }, 2000);
+        return;
+      }
+    } else {
+      toast.error("Choose an image");
+    }
+  };
 
   return (
     <div className="flex flex-col gap-10">
@@ -77,206 +113,137 @@ const PersonalAndContactInfo = () => {
       />
       <ImagePlaceholder setSelected={setSelectedImage} />
 
-      <form
-        className="flex flex-col gap-10"
-        onSubmit={async (e) => {
-          e.preventDefault();
-          await form.handleSubmit();
-        }}
-      >
-        <FormRow>
-          <form.AppField
+      <Form {...form}>
+        <form
+          className="w-full space-y-6"
+          onSubmit={form.handleSubmit(onSubmit)}
+        >
+          <FormField
+            control={form.control}
             name="dateOfBirth"
-            validators={{
-              onBlur: ({ value }) => {
-                if (!value) return "Date of birth is required";
-                return undefined;
-              },
-            }}
-            children={(field) => (
-              <field.Input
-                placeholder="Date of birth"
-                name="dateOfBirth"
-                type="date"
-                value={field.state.value}
-                onBlur={field.handleBlur}
-                onChange={(e) => field.handleChange(e.target.value)}
-                error={
-                  !field.state.meta.isValid
-                    ? field.state.meta.errors[0]
-                    : undefined
-                }
-                half
-              />
+            render={({ field }) => (
+              <FormItem className="flex flex-col">
+                <FormLabel>Date of Birth</FormLabel>
+                <Popover>
+                  <PopoverTrigger asChild>
+                    <FormControl>
+                      <Button
+                        variant="outline"
+                        className={`w-full py-5 pl-3 text-left ${
+                          !field.value && "text-muted-foreground"
+                        }`}
+                      >
+                        {field.value
+                          ? format(field.value, "PPP")
+                          : "Date of birth"}
+                      </Button>
+                    </FormControl>
+                  </PopoverTrigger>
+                  <PopoverContent className="w-auto p-0" align="start">
+                    <Calendar
+                      mode="single"
+                      selected={field.value}
+                      onSelect={field.onChange} // <-- this wires it to RHF
+                      disabled={(date) =>
+                        date > new Date() || date < new Date("1900-01-01")
+                      }
+                    />
+                  </PopoverContent>
+                </Popover>
+                <FormMessage />
+              </FormItem>
             )}
           />
-          <form.AppField
+
+          <Selector
             name="gender"
-            validators={{
-              onBlur: ({ value }) => {
-                if (!value) return "Gender is required";
-                return undefined;
-              },
-            }}
-            children={(field) => (
-              <field.Select
-                placeholder="Gender"
-                name="gender"
-                value={field.state.value}
-                onBlur={field.handleBlur}
-                onChange={(e) => field.handleChange(e.target.value)}
-                options={genderOptions}
-                error={
-                  !field.state.meta.isValid
-                    ? field.state.meta.errors[0]
-                    : undefined
-                }
-                half
-              />
-            )}
+            title="Select gender"
+            options={genderOptions}
           />
-        </FormRow>
 
-        <FormRow>
-          <form.AppField
+          <FormField
+            control={form.control}
             name="residentialAddress"
-            validators={{
-              onBlur: ({ value }) => {
-                if (!value) return "Address is required";
-                return undefined;
-              },
-            }}
-            children={(field) => (
-              <field.Input
-                placeholder="Residential address"
-                name="residentialAddress"
-                type="text"
-                value={field.state.value}
-                onBlur={field.handleBlur}
-                onChange={(e) => field.handleChange(e.target.value)}
-                error={
-                  !field.state.meta.isValid
-                    ? field.state.meta.errors[0]
-                    : undefined
-                }
-                half
-              />
+            render={({ field }) => (
+              <FormItem>
+                <FormControl>
+                  <Input
+                    type="text"
+                    placeholder="Residential address"
+                    className=""
+                    {...field}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
             )}
           />
-          
-          <form.AppField
+
+          <FormField
+            control={form.control}
             name="town"
-            validators={{
-              onBlur: ({ value }) => {
-                if (!value) return "Town is required";
-                return undefined;
-              },
-            }}
-            children={(field) => (
-              <field.Input
-                placeholder="Town"
-                name="town"
-                type="text"
-                value={field.state.value}
-                onBlur={field.handleBlur}
-                onChange={(e) => field.handleChange(e.target.value)}
-                error={
-                  !field.state.meta.isValid
-                    ? field.state.meta.errors[0]
-                    : undefined
-                }
-                half
-              />
+            render={({ field }) => (
+              <FormItem>
+                <FormControl>
+                  <Input
+                    type="text"
+                    placeholder="Town"
+                    className=""
+                    {...field}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
             )}
           />
-        </FormRow>
 
-        <FormRow>
-          <form.AppField
+          <FormField
+            control={form.control}
             name="state"
-            validators={{
-              onBlur: ({ value }) => {
-                if (!value) return "State is required";
-                return undefined;
-              },
-            }}
-            children={(field) => (
-              <field.Input
-                placeholder="State"
-                name="state"
-                type="text"
-                value={field.state.value}
-                onBlur={field.handleBlur}
-                onChange={(e) => field.handleChange(e.target.value)}
-                error={
-                  !field.state.meta.isValid
-                    ? field.state.meta.errors[0]
-                    : undefined
-                }
-                half
-              />
+            render={({ field }) => (
+              <FormItem>
+                <FormControl>
+                  <Input
+                    type="text"
+                    placeholder="State"
+                    className=""
+                    {...field}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
             )}
           />
-          <form.AppField
+
+          <FormField
+            control={form.control}
             name="stateOfOrigin"
-            validators={{
-              onBlur: ({ value }) => {
-                if (!value) return "State of origin is required";
-                return undefined;
-              },
-            }}
-            children={(field) => (
-              <field.Input
-                placeholder="State of origin"
-                name="stateOfOrigin"
-                type="text"
-                value={field.state.value}
-                onBlur={field.handleBlur}
-                onChange={(e) => field.handleChange(e.target.value)}
-                error={
-                  !field.state.meta.isValid
-                    ? field.state.meta.errors[0]
-                    : undefined
-                }
-                half
-              />
+            render={({ field }) => (
+              <FormItem>
+                <FormControl>
+                  <Input
+                    type="text"
+                    placeholder="State of origin"
+                    className=""
+                    {...field}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
             )}
           />
-        </FormRow>
 
-        <FormRow>
-          <form.AppField
+          <Selector
             name="language"
-            validators={{
-              onBlur: ({ value }) => {
-                if (!value) return "Language is required";
-                return undefined;
-              },
-            }}
-            children={(field) => (
-              <field.Select
-                placeholder="Language"
-                name="language"
-                value={field.state.value}
-                onBlur={field.handleBlur}
-                onChange={(e) => field.handleChange(e.target.value)}
-                options={languageOptions}
-                error={
-                  !field.state.meta.isValid
-                    ? field.state.meta.errors[0]
-                    : undefined
-                }
-              />
-            )}
+            title="Select language"
+            options={languageOptions}
           />
-        </FormRow>
 
-        <form.AppForm>
           <MainButton submit>
             {isPending ? <Spinner /> : "Save and Continue"}
           </MainButton>
-        </form.AppForm>
-      </form>
+        </form>
+      </Form>
     </div>
   );
 };

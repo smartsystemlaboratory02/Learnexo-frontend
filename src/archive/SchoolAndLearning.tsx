@@ -1,14 +1,14 @@
 import { useLocation, useNavigate } from "react-router-dom";
-import FormRow from "../../../../components/ui/form/FormRow";
-import PageProgress from "../../../../components/ui/form/PageProgress";
-import MainButton from "../../../../components/ui/MainButton";
-import HeaderText from "../../components/HeaderText";
+import FormRow from "../components/ui/form/FormRow";
+import PageProgress from "../components/ui/form/PageProgress";
+import MainButton from "../components/ui/MainButton";
+import HeaderText from "../pages/onboarding/components/HeaderText";
 import { removeAndReturn } from "@/utils/funcs";
 import {
   classOptions,
   gradeOptions,
   learningStyleOptions,
-} from "../../service";
+} from "../pages/onboarding/service";
 import { useAppForm } from "@/utils/services/form";
 import { useMutation } from "@tanstack/react-query";
 import { onboardingRequest } from "@/utils/queries/auth";
