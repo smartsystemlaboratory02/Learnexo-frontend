@@ -2,9 +2,9 @@ import type { Option } from "../../utils/types/baseTypes";
 
 export const roleOptions: Option[] = [
   { value: "student", label: "Student" },
-  { value: "teacher", label: "teacher" },
-  { value: "gaurdian", label: "gaurdian" },
-  { value: "administrator", label: "administrator" },
+  { value: "teacher", label: "Teacher" },
+  { value: "gaurdian", label: "Gaurdian" },
+  { value: "administrator", label: "Administrator" },
 ];
 
 export const genderOptions: Option[] = [

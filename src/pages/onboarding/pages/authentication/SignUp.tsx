@@ -3,37 +3,53 @@ import Check from "@/components/ui/form/Check";
 import BlueTextLink from "@/components/ui/BluetextLink";
 import { roleOptions } from "../../service";
 import { Link, useNavigate } from "react-router-dom";
-import FormRow from "@/components/ui/form/FormRow";
-import { useAppForm } from "@/utils/services/form";
+// import FormRow from "@/components/ui/form/FormRow";
+// import { useAppForm } from "@/utils/services/form";
 import { useEffect, useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { signupUserRequest } from "@/utils/queries/auth";
 import { toast } from "sonner";
+// import Spinner from "@/components/ui/Spinner";
+
+// import { Button } from "@/components/ui/button";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+// import { Separator } from "@/components/ui/separator";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import { Selector } from "@/components/ui/form/Selector";
+import MainButton from "@/components/ui/MainButton";
 import Spinner from "@/components/ui/Spinner";
+
+const formSchema = z
+  .object({
+    firstName: z.string().min(1, "First name is required"),
+    lastName: z.string().min(1, "Last name is required"),
+    email: z.email(),
+    password: z.string().min(8, "Password must be at least 8 characters long"),
+    confirmPassword: z
+      .string()
+      .min(8, "Password must be at least 8 characters long"),
+    role: z.string().min(1, "Role is required"),
+  })
+  .refine((data) => data.password === data.confirmPassword, {
+    message: "Passwords do not match",
+    path: ["confirmPassword"],
+  });
 
 const SignUp = () => {
   const [agreed, setAgreed] = useState<boolean>(false);
   // const [emailConfirmationOpen, setEmailConfirmationOpen] =
   // useState<boolean>(false);
   const navigate = useNavigate();
-
-  const signUpForm = useAppForm({
-    defaultValues: {
-      firstName: "",
-      lastName: "",
-      email: "",
-      password: "",
-      confirmPassword: "",
-      role: "",
-    },
-    onSubmit: ({ value }) => {
-      if (!agreed) {
-        toast.warning("Agree to the LearNEXO tearms and conditions");
-        return;
-      }
-      signupMutation(value);
-    },
-  });
 
   const {
     mutate: signupMutation,
@@ -47,6 +63,18 @@ const SignUp = () => {
     mutationKey: ["signupRequest"],
   });
 
+  const form = useForm<z.infer<typeof formSchema>>({
+    defaultValues: {
+      firstName: "",
+      lastName: "",
+      email: "",
+      password: "",
+      confirmPassword: "",
+      role: "",
+    },
+    resolver: zodResolver(formSchema),
+  });
+
   useEffect(() => {
     if (isError) {
       toast.error(error.message);
@@ -55,11 +83,20 @@ const SignUp = () => {
 
   if (isSuccess) {
     toast.success(response.message);
-    const email: string = signUpForm.getFieldValue("email");
+    const email: string = form.getValues("email");
     setTimeout(() => {
       navigate("../confirmOTP", { state: { email } });
     }, 2000);
   }
+
+  const onSubmit = (data: z.infer<typeof formSchema>) => {
+    console.log(data);
+    if (!agreed) {
+      toast.warning("Agree to the LearNEXO tearms and conditions");
+      return;
+    }
+    signupMutation(data);
+  };
 
   return (
     <div className="flex flex-col gap-6 md:gap-8">
@@ -71,190 +108,121 @@ const SignUp = () => {
         </BlueTextLink>
       </HeaderText>
 
-      <form
-        className="flex flex-col gap-4 md:gap-6"
-        onSubmit={(event) => {
-          event.preventDefault();
-          signUpForm.handleSubmit();
-        }}
-      >
-        <FormRow>
-          <signUpForm.AppField
+      <Form {...form}>
+        <form
+          className="w-full space-y-4"
+          onSubmit={form.handleSubmit(onSubmit)}
+        >
+          <FormField
+            control={form.control}
             name="firstName"
-            validators={{
-              onBlur: ({ value }) => {
-                if (!value) return "First name is required";
-                return undefined;
-              },
-            }}
-            
-            children={(field) => (
-              <field.Input
-                placeholder="First name"
-                type="text"
-                name="firstName"
-                value={field.state.value}
-                onBlur={field.handleBlur}
-                onChange={(e) => field.handleChange(e.target.value)}
-                error={
-                  !field.state.meta.isValid
-                    ? field.state.meta.errors[0]
-                    : undefined
-                }
-                half
-              />
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel hidden>First name</FormLabel>
+                <FormControl>
+                  <Input
+                    type="text"
+                    placeholder="First Name"
+                    className=""
+                    {...field}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
             )}
           />
 
-          <signUpForm.AppField
+          <FormField
+            control={form.control}
             name="lastName"
-            validators={{
-              onBlur: ({ value }) => {
-                if (!value) return "Last name is required";
-                return undefined;
-              },
-            }}
-            children={(field) => (
-              <field.Input
-                placeholder="Last name"
-                type="text"
-                name="lastName"
-                value={field.state.value}
-                onBlur={field.handleBlur}
-                onChange={(e) => field.handleChange(e.target.value)}
-                error={
-                  !field.state.meta.isValid
-                    ? field.state.meta.errors[0]
-                    : undefined
-                }
-                half
-              />
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel hidden>Last name</FormLabel>
+                <FormControl>
+                  <Input
+                    type="text"
+                    placeholder="Last Name"
+                    className=""
+                    {...field}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
             )}
           />
-        </FormRow>
 
-        <signUpForm.AppField
-          name="email"
-          validators={{
-            onBlur: ({ value }) => {
-              if (!value) return "Email is required";
-              if (!value.includes("@")) return "Invalid email";
-              return undefined;
-            },
-          }}
-          children={(field) => (
-            <field.Input
-              placeholder="Email"
-              type="email"
-              name="email"
-              value={field.state.value}
-              onBlur={field.handleBlur}
-              onChange={(e) => field.handleChange(e.target.value)}
-              error={
-                !field.state.meta.isValid
-                  ? field.state.meta.errors[0]
-                  : undefined
-              }
-            />
-          )}
-        />
+          <FormField
+            control={form.control}
+            name="email"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel hidden>Email</FormLabel>
+                <FormControl>
+                  <Input
+                    type="email"
+                    placeholder="Email"
+                    className="w-full"
+                    {...field}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
 
-        <signUpForm.AppField
-          name="password"
-          validators={{
-            onBlur: ({ value }) => {
-              if (!value) return "Password is required";
-              if (value.length < 6)
-                return "Password must be at least 6 characters";
-              return undefined;
-            },
-          }}
-          children={(field) => (
-            <field.Input
-              placeholder="Password"
-              type="password"
-              name="password"
-              value={field.state.value}
-              onBlur={field.handleBlur}
-              onChange={(e) => field.handleChange(e.target.value)}
-              error={
-                !field.state.meta.isValid
-                  ? field.state.meta.errors[0]
-                  : undefined
-              }
-              visibility
-            />
-          )}
-        />
+          <FormField
+            control={form.control}
+            name="password"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel hidden>Password</FormLabel>
+                <FormControl>
+                  <Input
+                    type="password"
+                    placeholder="Password"
+                    className="w-full"
+                    visibility
+                    {...field}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
 
-        <signUpForm.AppField
-          name="confirmPassword"
-          validators={{
-            onChangeListenTo: ["password"],
-            onChange: ({ value, fieldApi }) => {
-              if (value !== fieldApi.form.getFieldValue("password")) {
-                return "Passwords do not match";
-              }
-              return undefined;
-            },
-          }}
-          children={(field) => (
-            <field.Input
-              placeholder="Confirm password"
-              type="password"
-              name="confirmPassword"
-              value={field.state.value}
-              onBlur={field.handleBlur}
-              onChange={(e) => field.handleChange(e.target.value)}
-              error={
-                !field.state.meta.isValid
-                  ? field.state.meta.errors[0]
-                  : undefined
-              }
-              visibility
-            />
-          )}
-        />
+          <FormField
+            control={form.control}
+            name="confirmPassword"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel hidden>Password</FormLabel>
+                <FormControl>
+                  <Input
+                    type="password"
+                    placeholder="Confirm Password"
+                    className="w-full"
+                    {...field}
+                    visibility
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
 
-        <signUpForm.AppField
-          name="role"
-          validators={{
-            onBlur: ({ value }) => {
-              if (!value) return "Role is required";
-              return undefined;
-            },
-          }}
-          children={(field) => (
-            <field.Select
-              placeholder="Select role"
-              name="role"
-              value={field.state.value}
-              onBlur={field.handleBlur}
-              onChange={(e) => field.handleChange(e.target.value)}
-              options={roleOptions}
-              error={
-                !field.state.meta.isValid
-                  ? field.state.meta.errors[0]
-                  : undefined
-              }
-            />
-          )}
-        />
+          <Selector name="role" title="Select role" options={roleOptions}/>
 
-        <div className="text-blue-6 text-[14px] flex gap-2 items-center md:mb-6">
-          <Check state={agreed} setState={setAgreed} />
-          <p>
-            I agree to LearNEXO <BlueTextLink>Terms of service</BlueTextLink>{" "}
-            and <BlueTextLink>Privacy Policy</BlueTextLink>
-          </p>
-        </div>
+          <div className="text-blue-6 text-[14px] flex gap-2 items-center md:mb-6">
+            <Check state={agreed} setState={setAgreed} />
+            <p>
+              I agree to LearNEXO <BlueTextLink>Terms of service</BlueTextLink>{" "}
+              and <BlueTextLink>Privacy Policy</BlueTextLink>
+            </p>
+          </div>
 
-        <signUpForm.AppForm>
-          <signUpForm.MainButton submit>
-            {isPending ? <Spinner /> : "Sign Up"}
-          </signUpForm.MainButton>
-        </signUpForm.AppForm>
-      </form>
+          <MainButton submit>{isPending ? <Spinner /> : "Sign Up"}</MainButton>
+        </form>
+      </Form>
 
       {/* <Or />
 
