@@ -16,7 +16,7 @@ const SubjectRecommendation: React.FC<SubjectRecommendationProps> = ({
 }) => {
   return (
     <BentoBox>
-      <div className="flex justify-between items-center pb-3 border-b-gray-4 border-b min-w-50 w-full shrink-0">
+      <div className="flex justify-between items-center pb-3 border-b-gray-4 border-b min-w-50 w-full shrink-0 ">
         <div className="flex gap-4 items-center">
           <img src={book} alt={subject} />
           <p className="font-medium capitalize leading-[20px] text-sm">

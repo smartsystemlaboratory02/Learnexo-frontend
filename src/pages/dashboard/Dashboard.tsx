@@ -7,37 +7,39 @@ import PageLoader from "@/components/ui/profile/PageLoader";
 import { useState } from "react";
 
 const Dashboard = () => {
-  const [progress, setProgress] = useState(5);
+  const [progress, setProgress] = useState(20);
 
   return (
     <div className="">
-      {progress <= 100 && <PageLoader state={progress} setState={setProgress}/>}
-      
-      <div className="flex gap-4 justify-between">
-        <div className="flex flex-col gap-6 w-full">
-          <div className="flex flex-wrap gap-6">
+      {progress <= 100 && (
+        <PageLoader state={progress} setState={setProgress} />
+      )}
+
+      <div className="flex gap-4 justify-between border-2 p-4 rounded-md">
+        <div className="flex flex-col gap-4 w-full">
+          <h2 className="mb-4 font-semibold leading-5">Status Update</h2>
+          <div className="flex flex-wrap gap-6 justify-center sm:justify-start">
             <MetricBento
               topic="today's goal"
               info="Practice 5 questions today"
             />
-            <MetricBento topic="courses in progress" metric="1" />
-            <MetricBento topic="assessment quest" metric="1" />
+            <MetricBento topic="courses in progress" metric="0" />
+            <MetricBento topic="assessment quest" metric="0" />
           </div>
 
           <div>
             <h2 className="mb-4 font-semibold leading-5">
               Subjects Recommendation
             </h2>
-            <div className="flex flex-wrap gap-6 w-full">
-              {/* <SubjectRecommendation subject="mathematics" to="/dashboard" /> */}
+            <div className="flex flex-wrap gap-6 w-full justify-center sm:justify-start">
+              <SubjectRecommendation subject="mathematics" to="/dashboard" />
               <SubjectRecommendation subject="english" to="/dashboard" />
             </div>
           </div>
 
           <ActivitiesTable />
+          <Activities title="Activity Feed" activities={activityFeed} />
         </div>
-
-        <Activities title="Activity Feed" activities={activityFeed} />
       </div>
     </div>
   );

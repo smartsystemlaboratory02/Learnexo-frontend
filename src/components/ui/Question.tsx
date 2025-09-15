@@ -1,7 +1,7 @@
 import type { BaseQuestion } from "../../utils/types/baseTypes";
 
 type OptionProp = {
-    label: 'a' | 'b' | 'c' | 'd';
+    label: 'a' | 'b' | 'c' | 'd' | 'e';
     value: string;
 }
 
@@ -36,7 +36,7 @@ const Question = ({ questionObject }: { questionObject: QuestionProps }) => {
             {Object.entries(options).map(([option, value]) => (
               <Option
                 key={option}
-                label={option.toUpperCase() as "a" | "b" | "c" | "d"}
+                label={option.toUpperCase() as "a" | "b" | "c" | "d" | "e"}
                 value={value}
                 setSelected={setSelected}
                 selected={selected}
