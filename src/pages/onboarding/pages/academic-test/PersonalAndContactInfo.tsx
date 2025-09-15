@@ -115,7 +115,7 @@ const PersonalAndContactInfo = () => {
 
       <Form {...form}>
         <form
-          className="w-full space-y-6"
+          className="w-full space-y-6 max-w-md mx-auto"
           onSubmit={form.handleSubmit(onSubmit)}
         >
           <FormField
@@ -143,7 +143,7 @@ const PersonalAndContactInfo = () => {
                     <Calendar
                       mode="single"
                       selected={field.value}
-                      onSelect={field.onChange} // <-- this wires it to RHF
+                      onSelect={field.onChange} 
                       disabled={(date) =>
                         date > new Date() || date < new Date("1900-01-01")
                       }
