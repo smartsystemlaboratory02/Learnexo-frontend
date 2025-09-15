@@ -2,6 +2,7 @@ import { getSessionStorage } from "./getSessionStorage";
 import type { Headers } from "../types/baseTypes";
 
 const api_base_url = import.meta.env.VITE_API_BASE_URL;
+console.log("API Base URL:", import.meta.env.VITE_API_BASE_URL);
 
 export const useRequest = async (
   path: string,

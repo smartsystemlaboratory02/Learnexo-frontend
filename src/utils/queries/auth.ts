@@ -43,7 +43,7 @@ type OnboardingCredentials = {
 
 export const loginUserRequest = async ({ email, password }: LoginCredentials) =>
   await useRequest(
-    "/api/v1/auth/login",
+    "/auth/login",
     "POST",
     JSON.stringify({ email, password })
   );
@@ -56,7 +56,7 @@ export const signupUserRequest = async ({
   password,
 }: SignUpCredentials) =>
   await useRequest(
-    "/api/v1/auth/sign-in",
+    "/auth/sign-in",
     "POST",
     JSON.stringify({
       firstName,
@@ -73,7 +73,7 @@ export const confirmSignUpOTPRequest = async ({
   otp,
 }: ConfirmOTPCredentials) =>
   await useRequest(
-    "/api/v1/auth/verify",
+    "/auth/verify",
     "POST",
     JSON.stringify({ email, otp })
   );
@@ -83,20 +83,20 @@ export const confirmOTPRequest = async ({
   otp,
 }: ConfirmOTPCredentials) =>
   await useRequest(
-    "/api/v1/auth/verify-otp",
+    "/auth/verify-otp",
     "POST",
     JSON.stringify({ email, otp })
   );
 
 export const sendOTPToEmailRequest = async ({ email }: SendOTPCredentials) =>
-  await useRequest(`/api/v1/auth/send-otp/${email}`);
+  await useRequest(`/auth/send-otp/${email}`);
 
 export const resetPasswordRequest = async ({
   email,
   password,
 }: LoginCredentials) =>
   await useRequest(
-    "/api/v1/auth/reset-password",
+    "/auth/reset-password",
     "POST",
     JSON.stringify({
       email,
@@ -106,7 +106,7 @@ export const resetPasswordRequest = async ({
 
 export const onboardingRequest = async (values: OnboardingCredentials) =>
   await useRequest(
-    "/api/v1/auth/onboarding",
+    "/auth/onboarding",
     "POST",
     JSON.stringify({
       ...values,
@@ -117,14 +117,14 @@ export const uploadImageRequest = async (file: File) => {
   const formData = new FormData();
   formData.append("file", file);
 
-  return await useRequest("/api/v1/upload", "POST", formData);
+  return await useRequest("/upload", "POST", formData);
 };
 
 
 export const assessmentsRequest = async () => {
-  return await useRequest("/api/v1/assessment/Assessment");
+  return await useRequest("/assessment/Assessment");
 };
 
 export const questionnairesRequest = async () => {
-  return await useRequest("/api/v1/assessment/Questionnaire");
+  return await useRequest("/assessment/Questionnaire");
 };
