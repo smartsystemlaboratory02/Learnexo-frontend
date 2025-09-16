@@ -8,7 +8,7 @@ export default function Page() {
     <SidebarProvider>
       <AppSidebar />
 
-      <div className="px-4 md:px-6 w-full">
+      <div className="px-2 w-full">
         <Header />
         <Outlet />
       </div>

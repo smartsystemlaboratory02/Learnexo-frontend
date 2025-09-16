@@ -10,7 +10,7 @@ const StartPage = ({
   setStarted: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
   return (
-    <div className="md:border-2 p-4 rounded-md flex items-center justify-center h-full ">
+    <div className="md:border p-4 rounded-md flex items-center justify-center h-full ">
       <div className="flex-col gap-12 max-w-md flex items-center justify-center">
         <HeaderText title="English Assessment" />
         <p className="text-center">
