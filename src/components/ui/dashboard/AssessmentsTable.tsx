@@ -8,39 +8,10 @@ import {
 } from "@/components/ui/table";
 import BentoBox from "./BentoBox";
 import noData from "../../../assets/images/empty-table.png";
-
-// import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-// import { Copy } from "lucide-react";
+import type { Recommendation } from "@/utils/types/baseTypes";
 
-const englishTopics = [
-  {
-    sn: "001",
-    topic: "Comprehension - Main and Supporting Ideas",
-    score: "12%",
-    status: "Ongoing",
-  },
-  {
-    sn: "002",
-    topic: "Grammar - Parts of Speech",
-    score: "15%",
-    status: "Ongoing",
-  },
-  {
-    sn: "003",
-    topic: "Writing - Formal and Informal Letters",
-    score: "16%",
-    status: "Ongoing",
-  },
-  {
-    sn: "004",
-    topic: "Literature - Figures of Speech",
-    score: "20%",
-    status: "Ongoing",
-  },
-];
-
-// const mathematicsTopics = [
+// const englishTopics = [
 //   {
 //     sn: "001",
 //     topic: "Comprehension - Main and Supporting Ideas",
@@ -67,20 +38,24 @@ const englishTopics = [
 //   },
 // ];
 
-const tabs = [
-  {
-    name: "English",
-    value: "English",
-    content: englishTopics,
-  },
-  {
-    name: "Mathematics",
-    value: "Mathematics",
-    content: null,
-  },
-];
+const ActivitiesTable = ({
+  recommendations,
+}: {
+  recommendations: Recommendation[];
+}) => {
+  const tabs = [
+    {
+      name: "English",
+      value: "English",
+      content: recommendations,
+    },
+    {
+      name: "Mathematics",
+      value: "Mathematics",
+      content: null,
+    },
+  ];
 
-const ActivitiesTable = () => {
   return (
     <div>
       <Tabs defaultValue={tabs[0].value} className=" w-full">
@@ -107,23 +82,27 @@ const ActivitiesTable = () => {
                 <TableHeader>
                   <TableRow>
                     <TableHead>S/N</TableHead>
-                    <TableHead className="w-2/5">Topic</TableHead>
-                    <TableHead>Score</TableHead>
-                    <TableHead>Status</TableHead>
+                    <TableHead>Topic</TableHead>
+                    <TableHead>Focus</TableHead>
+                    <TableHead className="w-2/5">Feedback</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
                   {tab.content ? (
-                    tab.content.map((topic) => (
-                      <TableRow key={topic.sn}>
+                    tab.content.map((topic, index) => (
+                      <TableRow key={index}>
                         <TableCell className="font-medium">
-                          {topic.sn}
+                          {index + 1}
+                        </TableCell>
+                        <TableCell className="truncate">
+                          {topic.recommended_topic}
                         </TableCell>
                         <TableCell className="w-2/5 truncate">
-                          {topic.topic}
+                          {topic.recommend_for}
                         </TableCell>
-                        <TableCell>{topic.score}</TableCell>
-                        <TableCell>{topic.status}</TableCell>
+                        <TableCell className="w-2/5 truncate">
+                          {topic.feedback}
+                        </TableCell>
                       </TableRow>
                     ))
                   ) : (

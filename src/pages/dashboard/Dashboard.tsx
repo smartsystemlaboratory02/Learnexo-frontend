@@ -5,9 +5,11 @@ import { activityFeed } from "../../utils/lib/dashboard";
 import ActivitiesTable from "@/components/ui/dashboard/AssessmentsTable";
 import PageLoader from "@/components/ui/profile/PageLoader";
 import { useState } from "react";
+import { getLocalStorage } from "@/utils/hooks/getSessionStorage";
 
 const Dashboard = () => {
   const [progress, setProgress] = useState(20);
+  const recommendations = getLocalStorage("assessment_reccs", null);
 
   return (
     <div className="">
@@ -32,12 +34,18 @@ const Dashboard = () => {
               Subjects Recommendation
             </h2>
             <div className="flex flex-wrap gap-6 w-full justify-center sm:justify-start">
-              <SubjectRecommendation subject="mathematics" to="/assessment/ENGLISH_LANGUAGE/JSS2/1" />
-              <SubjectRecommendation subject="english" to="/assessment/ENGLISH_LANGUAGE/JSS2/1" />
+              <SubjectRecommendation
+                subject="mathematics"
+                to="/assessment/ENGLISH_LANGUAGE/JSS2/1"
+              />
+              <SubjectRecommendation
+                subject="english"
+                to="/assessment/ENGLISH_LANGUAGE/JSS2/1"
+              />
             </div>
           </div>
 
-          <ActivitiesTable />
+          <ActivitiesTable recommendations={recommendations}/>
           <Activities title="Activity Feed" activities={activityFeed} />
         </div>
       </div>

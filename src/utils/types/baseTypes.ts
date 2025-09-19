@@ -21,6 +21,12 @@ export type Headers = {
 };
 
 export type Answer = {
-  answer: string
-  questionId: string
+  answer: string;
+  questionId: string;
+};
+
+export type Recommendation = {
+  feedback: string;
+  recommend_for: string;
+  recommended_topic: string;
 };
