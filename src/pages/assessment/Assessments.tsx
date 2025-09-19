@@ -9,13 +9,13 @@ const Assessments = () => {
       </h1>
 
       <BentoBox>
-        <Link to="/assessment/english/1">
+        <Link to="/assessment/ENGLISH_LANGUAGE/JSS2/1">
           <p className="text-2xl font-semibold">English Language</p>
         </Link>
       </BentoBox>
 
       <BentoBox>
-        <Link to="/assessment/english/1">
+        <Link to="/assessment/ENGLISH_LANGUAGE/JSS2/1">
           <p className="text-2xl font-semibold">Mathematics</p>
         </Link>
       </BentoBox>

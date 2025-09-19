@@ -20,7 +20,6 @@ const Option: React.FC<Pick<QuestionProps, 'setSelected' | 'selected'> & OptionP
 }
 
 const Question = ({ questionObject }: { questionObject: QuestionProps }) => {
-    console.log(questionObject)
     const { question, options, index, selected, setSelected } = questionObject
 
     return (

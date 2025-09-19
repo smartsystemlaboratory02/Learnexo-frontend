@@ -32,8 +32,8 @@ const Dashboard = () => {
               Subjects Recommendation
             </h2>
             <div className="flex flex-wrap gap-6 w-full justify-center sm:justify-start">
-              <SubjectRecommendation subject="mathematics" to="/dashboard" />
-              <SubjectRecommendation subject="english" to="/dashboard" />
+              <SubjectRecommendation subject="mathematics" to="/assessment/ENGLISH_LANGUAGE/JSS2/1" />
+              <SubjectRecommendation subject="english" to="/assessment/ENGLISH_LANGUAGE/JSS2/1" />
             </div>
           </div>
 

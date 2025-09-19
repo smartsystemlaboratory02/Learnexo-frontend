@@ -19,3 +19,8 @@ export type Headers = {
   Authorization: string;
   "Content-Type"?: string;
 };
+
+export type Answer = {
+  answer: string
+  questionId: string
+};

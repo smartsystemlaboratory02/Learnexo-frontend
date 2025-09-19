@@ -8,7 +8,7 @@ const AssessmentRoutes = () => {
     <Routes>
       <Route path="/" element={<MainLayout />}>
         <Route index element={<Assessments />} />
-        <Route path=":subject/:id" element={<Assessment />} />
+        <Route path=":subject/:gradeClass/:id" element={<Assessment />} />
       </Route>
     </Routes>
   );
