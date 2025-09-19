@@ -9,9 +9,9 @@ import {
 import BentoBox from "./BentoBox";
 import noData from "../../../assets/images/empty-table.png";
 
-import { Button } from "@/components/ui/button";
+// import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Copy } from "lucide-react";
+// import { Copy } from "lucide-react";
 
 const englishTopics = [
   {
@@ -103,7 +103,7 @@ const ActivitiesTable = () => {
 
           {tabs.map((tab) => (
             <TabsContent key={tab.value} value={tab.value}>
-              <Table className="table-fixed  min-w-150">
+              <Table className="table-fixed min-w-120">
                 <TableHeader>
                   <TableRow>
                     <TableHead>S/N</TableHead>
