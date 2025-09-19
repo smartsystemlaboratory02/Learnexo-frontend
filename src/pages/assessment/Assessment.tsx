@@ -1,20 +1,16 @@
 import Question from "@/components/ui/Question";
-import React, { useEffect, useState } from "react";
-// import { academicQuestions } from "@/utils/lib/academictest";
 import { useNavigate, useParams } from "react-router-dom";
 import { transformQuestion } from "@/utils/funcs";
 import TestInstruction from "@/components/ui/TestInstruction";
-// import HeaderText from "../onboarding/components/HeaderText";
 import MainButton from "@/components/ui/MainButton";
-// import type { BaseQuestion } from "@/utils/types/baseTypes";
-import { toast } from "sonner";
 import StartPage from "./StartPage";
 import CountdownPage from "./CountdownPage";
 import Spinner from "@/components/ui/Spinner";
 import { getAssessmentRequest } from "@/utils/queries/assessment";
 import { useQuery } from "@tanstack/react-query";
 import { type Answer } from "@/utils/types/baseTypes";
-// import { gradeOptions } from "../onboarding/service";
+import Navigation from "./Navigation";
+import { useEffect, useState } from "react";
 
 const Assessment = () => {
   const { subject, gradeClass, id } = useParams<{
@@ -100,7 +96,7 @@ const Assessment = () => {
   const questions = assessmentQuestions.data.map(transformQuestion);
   const numberOfQuestions = questions.length;
   // const question = questions.find((question: BaseQuestion) => question.index === idInt);
-  const question = questions[idInt];
+  const question = questions[idInt-1];
 
   if (!started) {
     return (
@@ -121,7 +117,7 @@ const Assessment = () => {
         <p className="mb-4">
           Something went wrong with this question! Kindly proceed
         </p>
-        <Navigation idInt={idInt} numberOfQuestions={numberOfQuestions} />
+        <Navigation idInt={idInt} numberOfQuestions={numberOfQuestions} answers={answers}/>
       </div>
     );
   }
@@ -159,60 +155,4 @@ const Assessment = () => {
 
 export default Assessment;
 
-const Navigation: React.FC<{
-  idInt: number;
-  numberOfQuestions: number;
-  answers: Answer[];
-}> = ({ idInt, numberOfQuestions }) => {
-  const navigate = useNavigate();
-  const [submitCount, setSubmitCount] = useState(0);
-  const { subject, gradeClass } = useParams<{
-    subject: string;
-    gradeClass: string;
-  }>();
 
-  return (
-    <div className="flex gap-4 flex-col md:flex-row mlg:flex-col lgd:flex-row justify-between">
-      {idInt > 1 && (
-        <div className="md:mr-auto mlg:mr-0 lgd:mr-auto">
-          <MainButton
-            white
-            onClick={() => navigate(`../${subject}/${gradeClass}/${idInt - 1}`)}
-          >
-            Previous Question
-          </MainButton>
-        </div>
-      )}
-
-      {idInt < numberOfQuestions && (
-        <div className="md:ml-auto mlg:ml-0 lgd:ml-auto">
-          <MainButton
-            onClick={() => navigate(`../${subject}/${gradeClass}/${idInt + 1}`)}
-          >
-            Next Question
-          </MainButton>
-        </div>
-      )}
-
-      {idInt === numberOfQuestions && (
-        <div className="md:ml-auto mlg:ml-0 lgd:ml-auto">
-          <MainButton
-            onClick={() => {
-              if (submitCount <= 1) {
-                setSubmitCount(submitCount + 1)
-                toast.warning("You cannot edit your answers after this step");
-                return
-              }
-              // submit answers
-              setTimeout(() => {
-                navigate(`../../../dashboard`);
-              }, 2000);
-            }}
-          >
-            Submit Answers And Proceed
-          </MainButton>
-        </div>
-      )}
-    </div>
-  );
-};
